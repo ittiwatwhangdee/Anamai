@@ -105,7 +105,7 @@ class MyStatelessWidget extends StatelessWidget {
                 height: 18,
               ),
               Text(
-                'กรมอนามัย ได้จัดทำ Mobile/Web Application ภายใต้ชื่อ "ระบบการขอมีบัตรประจำตัวและประกาศนียบัตรภายใต้ภารกิจของกรมอนามัย (DOHCard Application)"  ขึ้นโดยมีวัตถุประสงค์เพื่อ',
+                'กรมอนามัย ได้จัดทำแอปพลิเคชัน ภายใต้ชื่อ "ระบบการขอมีบัตรประจำตัวและประกาศนียบัตรภายใต้ภารกิจของกรมอนามัย (DOHCard Application)"  ขึ้นโดยมีวัตถุประสงค์เพื่อ',
                 style: TextStyle(
                   fontSize: 17,
                   color: Colors.black,
