@@ -22,6 +22,9 @@ class AnnouncenmentPage extends StatelessWidget {
           ),
           title: const Text(
             _title,
+            style: TextStyle(
+              fontSize: 18,
+            ),
           ),
           backgroundColor: Colors.blue[800],
         ),
