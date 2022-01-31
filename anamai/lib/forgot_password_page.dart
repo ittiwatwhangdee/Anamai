@@ -132,13 +132,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       width: 250,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                          gradient: LinearGradient(
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
-                              colors: [
-                                Colors.blue.shade800,
-                                Colors.blue.shade800,
-                              ])),
+                          color: Colors.blue[800]),
                       child: Padding(
                         padding: EdgeInsets.all(12.0),
                         child: Text(
