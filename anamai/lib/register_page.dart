@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class RegisterPage extends StatelessWidget {
   const RegisterPage({Key? key}) : super(key: key);
 
-  static const String _title = '';
+  static const String _title = 'ข้อกําหนดและเงื่อนไขการใช้บริการ';
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +23,9 @@ class RegisterPage extends StatelessWidget {
           ),
           title: const Text(
             _title,
+            style: TextStyle(
+              fontSize: 18,
+            ),
           ),
           backgroundColor: Colors.blue[800],
         ),
@@ -54,7 +57,7 @@ class MyStatelessWidget extends StatelessWidget {
                 width: 170,
               ),
               SizedBox(
-                height: 18,
+                height: 40,
               ),
               Text(
                 'ข้อกำหนดและเงื่อนไขการใช้แอปพลิเคชันระบบ\nการขอมีบัตรประจำตัวและประกาศนียบัตรภายใต้\nภารกิจของอนามัย (DOHCard Application)',
@@ -63,6 +66,50 @@ class MyStatelessWidget extends StatelessWidget {
                     color: Colors.black,
                     fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
+              ),
+              SizedBox(
+                height: 23,
+              ),
+              Text(
+                'ก่อนเริ่มใช้งานโปรดอ่านและทำความเข้าใจอย่างละเอียด และกรุณายอมรับข้อกำหนดและเงื่อนไข',
+                style: TextStyle(
+                  fontSize: 17,
+                  color: Colors.black,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(
+                height: 23,
+              ),
+              Text(
+                'โปรดอ่านและทำความเข้าใจข้อกำหนดและเงื่อนไขการใช้แอปพลิเคชั่นนี้อย่างละเอียด การที่ท่านได้ติดตั้งหรือเข้าใช้งานแอปพลิเคชันนี้แล้ว ถือว่าท่านตกลงยอมรับข้อกำหนดและเงื่อนไขการใช้แอปพลิเคชันแล้วทุกประการ หากท่านไม่สามารถยอมรับข้อกำหนดนโยบายความเป็นส่วนตัวนี้ได้ ขอให้ท่านปฏิเสธการใช้งานแอปพลิเคชันของท่านทันที',
+                style: TextStyle(
+                  fontSize: 17,
+                  color: Colors.black,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(
+                height: 23,
+              ),
+              Text(
+                '1. วัตถุประสงค์',
+                style: TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(
+                height: 18,
+              ),
+              Text(
+                'กรมอนามัย ได้จัดทำ Mobile/Web Application ภายใต้ชื่อ "ระบบการขอมีบัตรประจำตัวและประกาศนียบัตรภายใต้ภารกิจของกรมอนามัย (DOHCard Application)"  ขึ้นโดยมีวัตถุประสงค์เพื่อ',
+                style: TextStyle(
+                  fontSize: 17,
+                  color: Colors.black,
+                ),
               ),
               SizedBox(
                 height: 18,
