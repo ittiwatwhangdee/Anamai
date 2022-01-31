@@ -101,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(25, 20, 25, 20),
+                      padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
