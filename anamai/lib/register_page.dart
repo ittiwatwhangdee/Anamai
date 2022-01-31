@@ -43,13 +43,11 @@ class MyStatelessWidget extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                height: 100,
+                height: 40,
               ),
               Image.asset(
                 'assets/images/LogoAnamai.png',
@@ -101,9 +99,6 @@ class MyStatelessWidget extends StatelessWidget {
                 ),
                 textAlign: TextAlign.left,
               ),
-              SizedBox(
-                height: 18,
-              ),
               Text(
                 'กรมอนามัย ได้จัดทำแอปพลิเคชัน ภายใต้ชื่อ "ระบบการขอมีบัตรประจำตัวและประกาศนียบัตรภายใต้ภารกิจของกรมอนามัย (DOHCard Application)"  ขึ้นโดยมีวัตถุประสงค์เพื่อ',
                 style: TextStyle(
@@ -111,8 +106,50 @@ class MyStatelessWidget extends StatelessWidget {
                   color: Colors.black,
                 ),
               ),
+              Text(
+                '1.1 เพื่อลงทะเบียนบัตรประจำตัวเจ้าพนักงาน พนักงานเจ้าหน้าที่ บัตรประจำตัว ผู้ประกอบกิจการสถานที่จำหน่ายอาหารและผู้สัมผัสอาหารแบบอิเล็กทรอนิกส์ตามกฎหมายที่อยู่ในความรับผิดชอบของกรมอนามัย',
+                style: TextStyle(
+                  fontSize: 17,
+                  color: Colors.black,
+                ),
+              ),
               SizedBox(
                 height: 18,
+              ),
+              Text(
+                '2. การให้ความยินยอมพิสูจน์ตัวตน',
+                style: TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+                textAlign: TextAlign.left,
+              ),
+              Text(
+                'ข้าพเจ้ายินยอมให้ กรมอนามัย (รวมถึงหน่วยงานอื่นใดที่ได้รับมอบหมายจากกรมอนามัย) และหน่วยงานอื่น เก็บรวบรวม ใช้ และเปิดเผยข้อมูลส่วนบุคคลของข้าพเจ้า ได้แก่ เลขบัตรประจำตัวประชาชน ชื่อ - นามสกุล วันเกิด เบอร์โทรศัพท์ ที่อยู่ ที่ผู้ใช้งานบันทึกข้อมูลหรือระบุบนเอกสารยืนยันตัวตนของราชการ ข้อมูลชีวภาพ/ข้อมูลชีวมิติ (เช่น ภาพจำลองใบหน้า)',
+                style: TextStyle(
+                  fontSize: 17,
+                  color: Colors.black,
+                ),
+              ),
+              SizedBox(
+                height: 18,
+              ),
+              Text(
+                '3. การให้ความยินยอมข้อมูลส่วนบุคคล',
+                style: TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+                textAlign: TextAlign.left,
+              ),
+              Text(
+                'เพื่อให้การใช้งานระบบการขอมีบัตรประจำตัวและประกาศนียบัตรภายใต้ภารกิจของกรมอนามัย เป็นไปตามกฎหมายว่าด้วยการคุ้มครองข้อมูลส่วนบุคคล กรมอนามัยและหรือองค์กรและ/หรือหน่วยงานอื่นใดที่ให้บริการภายใต้แอปพลิเคชัน ระบบการขอมีบัตรประจำตัวและประกาศนียบัตรภายใต้ภารกิจของกรมอนามัย ขอให้ผู้ใช้งานแสดงเจตนายินยอมให้ หน่วยงาน เก็บรวมรวม ใช้ หรือเปิดเผยข้อมูลส่วนบุคคลของผู้ใช้งาน รวมทั้งรับทราบว่ากรมอนามัย ผู้ให้บริการแอปพลิเคชัน ระบบการขอมีบัตรประจำตัวและประกาศนียบัตรภายใต้ภารกิจของกรมอนามัยและผู้พัฒนาระบบให้บริการเพื่อเชื่อมต่อกับหน่วยงานที่ได้รับมอบหมายจากหน่วยงาน เก็บรวบรวม ใช้ หรือเปิดเผยข้อมูลส่วนบุคคลของผู้มีสิทธิ ทั้งนี้ ภายใต้วัตถุประสงค์ในการดำเนินการบริการด้านการส่งเสริมสุขภาพที่เกี่ยวข้องกับหน่วยงาน',
+                style: TextStyle(
+                  fontSize: 17,
+                  color: Colors.black,
+                ),
               ),
               Container(
                 margin: EdgeInsets.only(top: 40),
