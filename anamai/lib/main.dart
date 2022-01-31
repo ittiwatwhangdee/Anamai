@@ -6,7 +6,7 @@ import 'login_page.dart';
 
 void main() {
   runApp(MaterialApp(
-    theme: ThemeData(fontFamily: 'SFProTH_regular'),
+    theme: ThemeData(fontFamily: 'SFProTH_regular', canvasColor: Colors.red),
     debugShowCheckedModeBanner: false,
     // home: SplashScreen(),
     home: LoginPage(),
