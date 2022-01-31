@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'forgot_password_page.dart';
 import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -45,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 18,
               ),
               Container(
-                height: 350,
+                height: 370,
                 width: 305,
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -103,21 +104,35 @@ class _LoginPageState extends State<LoginPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            'ลงทะเบียน',
-                            style: TextStyle(
-                                fontSize: 13, color: Colors.blue[800]),
+                          TextButton(
+                            onPressed: () {
+                              //action
+                            },
+                            child: Text(
+                              'ลงทะเบียน',
+                              style: TextStyle(
+                                  fontSize: 13,
+                                  color: Colors.blue[800]), //aligment
+                            ),
                           ),
-                          Text(
-                            'ลืมรหัสผ่าน?',
-                            style: TextStyle(
-                                fontSize: 13, color: Colors.blue[800]),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const ForgotPasswordPage()),
+                              );
+                            },
+                            child: Text(
+                              'ลืมรหัสผ่าน?',
+                              style: TextStyle(
+                                  fontSize: 13,
+                                  color: Colors.blue[800]), //aligment
+                            ),
                           ),
                         ],
                       ),
-                    ),
-                    SizedBox(
-                      height: 5,
                     ),
                     GestureDetector(
                         child: ElevatedButton(
