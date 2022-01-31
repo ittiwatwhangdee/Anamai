@@ -36,15 +36,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 height: 18,
               ),
               Text(
-                'ระบบมีการขอมีบัตรประจำตัวและประกาศนียบัตร',
+                'ระบบการขอมีบัตรประจำตัวและประกาศนียบัตร\nภายใต้ภารกิจของกรมอนามัย',
                 style: TextStyle(fontSize: 15, color: Colors.white),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Text(
-                'ภายใต้ภารกิจของกรมอนามัย',
-                style: TextStyle(fontSize: 15, color: Colors.white),
+                textAlign: TextAlign.center,
               ),
               SizedBox(
                 height: 18,
