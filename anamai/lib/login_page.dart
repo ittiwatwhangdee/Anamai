@@ -99,10 +99,15 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(20, 20, 40, 20),
+                      padding: EdgeInsets.fromLTRB(25, 20, 25, 20),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          Text(
+                            'ลงทะเบียน',
+                            style: TextStyle(
+                                fontSize: 13, color: Colors.blue[800]),
+                          ),
                           Text(
                             'ลืมรหัสผ่าน?',
                             style: TextStyle(
