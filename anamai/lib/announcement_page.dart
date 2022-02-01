@@ -74,6 +74,40 @@ class MyStatelessWidget extends StatelessWidget {
                       ),
                     ],
                   ),
+                  // Image.asset('assets/images/Announ1.png'),
+                ],
+              ),
+            ),
+            Card(
+              clipBehavior: Clip.antiAlias,
+              child: Column(
+                children: [
+                  ListTile(
+                    leading: Image.asset('assets/images/LogoAnamai.png'),
+                    title: const Text('บะหมี่กึ่งสำเร็จรูปโซเดียมสูง'),
+                    subtitle: Text(
+                      'วันอังคารที่ 2 กุมภาพันธ์ พ.ศ.2565',
+                      style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      'กรมอนามัย เตือน บะหมี่กึ่งสำเร็จรูปโซเดียมสูง กินบ่อย เสี่ยง ‘ความดันสูง – หัวใจวาย’',
+                      style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                    ),
+                  ),
+                  ButtonBar(
+                    alignment: MainAxisAlignment.start,
+                    children: [
+                      FlatButton(
+                        onPressed: () {
+                          // Perform some action
+                        },
+                        child: const Text('อ่านรายละเอียด'),
+                      ),
+                    ],
+                  ),
                   // Image.asset('assets/images/LogoAnamai.png'),
                 ],
               ),
