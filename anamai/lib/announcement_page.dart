@@ -108,7 +108,7 @@ class MyStatelessWidget extends StatelessWidget {
                       ),
                     ],
                   ),
-                  // Image.asset('assets/card-sample-image.jpg'),
+                  // Image.asset('assets/images/LogoAnamai.png'),
                 ],
               ),
             ),
