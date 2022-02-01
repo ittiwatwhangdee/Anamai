@@ -6,9 +6,7 @@ import 'login_page.dart';
 
 void main() {
   runApp(MaterialApp(
-    theme: ThemeData(fontFamily: 'SFProTH_regular'),
-    debugShowCheckedModeBanner: false,
-    // home: SplashScreen(),
+    theme: ThemeData(fontFamily: 'SFProTH_regular'), // home: SplashScreen(),
     home: LoginPage(),
   ));
 }
