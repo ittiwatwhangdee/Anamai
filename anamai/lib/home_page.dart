@@ -59,7 +59,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[800],
+        backgroundColor: Color(0xFF1565C0),
         title: Container(
           child: Align(
             alignment: Alignment.center,
@@ -95,7 +95,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           children: [
             const DrawerHeader(
               decoration: BoxDecoration(
-                color: Color(0xFF3375B7),
+                color: Color(0xFF1565C0),
               ),
               child: Text(
                 'admin@gmail.com',
@@ -114,9 +114,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               ),
               trailing: Icon(Icons.arrow_right),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
                 Navigator.pop(context);
               },
             ),
@@ -128,9 +125,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 ),
                 trailing: Icon(Icons.arrow_right),
                 onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -145,9 +139,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               ),
               trailing: Icon(Icons.arrow_right),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
                 Navigator.pop(context);
               },
             ),
@@ -159,9 +150,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               ),
               trailing: Icon(Icons.arrow_right),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
                 Navigator.pop(context);
               },
             ),
@@ -173,9 +161,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               ),
               trailing: Icon(Icons.arrow_right),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const HealthPoint()),
@@ -190,9 +175,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               ),
               trailing: Icon(Icons.arrow_right),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const RequestPage()),
@@ -225,9 +207,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               ),
               trailing: Icon(Icons.arrow_right),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const LoginPage()),
@@ -253,7 +232,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue[800],
+        selectedItemColor: Color(0xFF1565C0),
         onTap: _onItemTapped,
       ),
     );
