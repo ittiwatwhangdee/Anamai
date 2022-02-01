@@ -71,7 +71,7 @@ class MyStatelessWidget extends StatelessWidget {
                       ButtonBar(
                         alignment: MainAxisAlignment.start,
                         children: [
-                          FlatButton(
+                          TextButton(
                             onPressed: () {
                               // Perform some action
                             },
