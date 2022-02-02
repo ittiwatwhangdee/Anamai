@@ -1,17 +1,24 @@
+import 'package:anamai/noti_news_page.dart';
+
 import 'home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const NotificationPage());
 
-class NotificationPage extends StatelessWidget {
+class NotificationPage extends StatefulWidget {
   const NotificationPage({Key? key}) : super(key: key);
 
   static const String _title = 'Flutter Code Sample';
 
   @override
+  _NotificationPageState createState() => _NotificationPageState();
+}
+
+class _NotificationPageState extends State<NotificationPage> {
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: _title,
+      title: NotificationPage._title,
       theme: ThemeData(fontFamily: 'SFProTH_regular'),
       home: MyStatefulWidget(),
     );
@@ -40,6 +47,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         leading: IconButton(
           onPressed: () {
             Navigator.push(
@@ -53,6 +61,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
         backgroundColor: Colors.blue[800],
         bottom: TabBar(
           controller: _tabController,
+          unselectedLabelColor: Colors.white,
+          labelColor: Colors.black,
+          indicatorWeight: 0,
+          indicatorColor: Colors.white,
+          indicator: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+              color: Colors.white),
           tabs: const <Widget>[
             Tab(text: 'ข่าว'),
             Tab(text: 'บัตรของฉัน'),
@@ -61,13 +77,39 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
       ),
       body: TabBarView(
         controller: _tabController,
-        children: const <Widget>[
+        children: <Widget>[
+          NewsPage(),
+          MyCard(),
+        ],
+      ),
+    );
+  }
+}
+
+class NewsPage extends StatelessWidget {
+  NewsPage({Key? key}) : super(key: key);
+
+  bool pressAttention = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
           Center(
-            child: Text("ไม่มีการแจ้งเตือน"),
+            child: Text("แจ้งเตือนข่าว"),
           ),
-          Center(
-            child: Text("ไม่มีการแจ้งเตือน"),
-          ),
+          new RaisedButton(
+              child: new Text('Attention'),
+              textColor: Colors.white,
+              shape: new RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(30.0),
+              ),
+              color: pressAttention ? Colors.grey : Colors.blue,
+              onPressed: () {
+                pressAttention = !pressAttention;
+                print(pressAttention);
+              })
         ],
       ),
     );

@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 
-class MyCardPage extends StatelessWidget {
+class MyCardPage extends StatefulWidget {
   const MyCardPage({Key? key}) : super(key: key);
   static const String _title = 'บัตรของฉัน';
+
+  @override
+  _MyCardPageState createState() => _MyCardPageState();
+}
+
+class _MyCardPageState extends State<MyCardPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: _title,
+      title: MyCardPage._title,
       theme: ThemeData(
         fontFamily: 'SFProTH_regular',
       ),
@@ -19,7 +25,7 @@ class MyCardPage extends StatelessWidget {
             icon: const Icon(Icons.arrow_back_ios_new_outlined),
           ),
           title: const Text(
-            _title,
+            MyCardPage._title,
             style: TextStyle(
               fontSize: 18,
             ),

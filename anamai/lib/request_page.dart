@@ -2,15 +2,20 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(const RequestPage());
 
-class RequestPage extends StatelessWidget {
+class RequestPage extends StatefulWidget {
   const RequestPage({Key? key}) : super(key: key);
 
   static const String _title = 'สถานะการร้องเรียน';
 
   @override
+  _RequestPageState createState() => _RequestPageState();
+}
+
+class _RequestPageState extends State<RequestPage> {
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: _title,
+      title: RequestPage._title,
       theme: ThemeData(
         fontFamily: 'SFProTH_regular',
       ),
@@ -22,7 +27,7 @@ class RequestPage extends StatelessWidget {
             },
             icon: Icon(Icons.arrow_back_ios_new_outlined),
           ),
-          title: const Text(_title),
+          title: const Text(RequestPage._title),
           backgroundColor: Colors.blue[800],
         ),
         body: MyStatelessWidget(),

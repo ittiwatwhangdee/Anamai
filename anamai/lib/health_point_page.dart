@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 
-class HealthPoint extends StatelessWidget {
+class HealthPoint extends StatefulWidget {
   const HealthPoint({Key? key}) : super(key: key);
 
   static const String _title = 'คะแนน Health Point';
 
   @override
+  _HealthPointState createState() => _HealthPointState();
+}
+
+class _HealthPointState extends State<HealthPoint> {
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: _title,
+      title: HealthPoint._title,
       theme: ThemeData(
         fontFamily: 'SFProTH_regular',
       ),
@@ -21,7 +26,7 @@ class HealthPoint extends StatelessWidget {
             icon: const Icon(Icons.arrow_back_ios_new_outlined),
           ),
           title: const Text(
-            _title,
+            HealthPoint._title,
             style: TextStyle(
               fontSize: 18,
             ),

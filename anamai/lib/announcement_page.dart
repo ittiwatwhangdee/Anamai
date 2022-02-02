@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 
-class AnnouncenmentPage extends StatelessWidget {
+class AnnouncenmentPage extends StatefulWidget {
   const AnnouncenmentPage({Key? key}) : super(key: key);
 
   static const String _title = 'ข่าวประชาสัมพันธ์';
 
   @override
+  _AnnouncenmentPageState createState() => _AnnouncenmentPageState();
+}
+
+class _AnnouncenmentPageState extends State<AnnouncenmentPage> {
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: _title,
+      title: AnnouncenmentPage._title,
       theme: ThemeData(
         fontFamily: 'SFProTH_regular',
       ),
@@ -21,7 +26,7 @@ class AnnouncenmentPage extends StatelessWidget {
             icon: const Icon(Icons.arrow_back_ios_new_outlined),
           ),
           title: const Text(
-            _title,
+            AnnouncenmentPage._title,
             style: TextStyle(
               fontSize: 18,
             ),

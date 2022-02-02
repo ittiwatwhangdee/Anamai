@@ -1,15 +1,20 @@
 import 'package:anamai/login_page.dart';
 import 'package:flutter/material.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
 
   static const String _title = 'ข้อกําหนดและเงื่อนไขการใช้บริการ';
 
   @override
+  _RegisterPageState createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: _title,
+      title: RegisterPage._title,
       theme: ThemeData(
         fontFamily: 'SFProTH_regular',
       ),
@@ -22,7 +27,7 @@ class RegisterPage extends StatelessWidget {
             icon: const Icon(Icons.arrow_back_ios_new_outlined),
           ),
           title: const Text(
-            _title,
+            RegisterPage._title,
             style: TextStyle(
               fontSize: 18,
             ),

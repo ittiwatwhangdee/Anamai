@@ -10,15 +10,20 @@ import 'login_page.dart';
 
 void main() => runApp(const HomePage());
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   static const String _title = 'Flutter Code Sample';
 
   @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: _title,
+      title: HomePage._title,
       theme: ThemeData(fontFamily: 'SFProTH_regular'),
       home: MyStatefulWidget(),
     );
