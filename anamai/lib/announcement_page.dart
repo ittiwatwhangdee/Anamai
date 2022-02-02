@@ -37,13 +37,16 @@ class AnnouncenmentPage extends StatelessWidget {
 class MyStatelessWidget extends StatelessWidget {
   const MyStatelessWidget({Key? key}) : super(key: key);
 
+  final String title = 'บะหมี่กึ่งสำเร็จรูปโซเดียมสูง';
+  final String date = '2 กุมภาพันธ์ พ.ศ.2565';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListView.builder(
-            itemCount: 5,
+            itemCount: 3,
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -54,32 +57,22 @@ class MyStatelessWidget extends StatelessWidget {
                       Image.asset('assets/images/Announ1.png'),
                       ListTile(
                         // leading: Image.asset('assets/images/LogoAnamai.png'),
-                        title: const Text('บะหมี่กึ่งสำเร็จรูปโซเดียมสูง'),
+                        title: Text('$title'),
                         subtitle: Text(
-                          '2 กุมภาพันธ์ พ.ศ.2565',
+                          '$date',
                           style:
                               TextStyle(color: Colors.black.withOpacity(0.6)),
                         ),
                       ),
-                      // Padding(
-                      //   padding: const EdgeInsets.all(16.0),
-                      //   child: Text(
-                      //     'กรมอนามัย เตือน บะหมี่กึ่งสำเร็จรูปโซเดียมสูง กินบ่อย เสี่ยง ‘ความดันสูง – หัวใจวาย’',
-                      //     style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                      //   ),
-                      // ),
                       ButtonBar(
                         alignment: MainAxisAlignment.start,
                         children: [
                           TextButton(
-                            onPressed: () {
-                              // Perform some action
-                            },
+                            onPressed: () {},
                             child: const Text('อ่านเพิ่มเติม >'),
                           ),
                         ],
                       ),
-                      // Image.asset('assets/images/Announ1.png'),
                     ],
                   ),
                 ),
