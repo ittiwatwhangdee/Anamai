@@ -40,7 +40,49 @@ class MyStatelessWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(),
+      body: Container(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: DataTable(
+              columns: const <DataColumn>[
+                DataColumn(
+                  label: Text('ลำดับ',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                ),
+                DataColumn(
+                  label: Text('รายละเอียด',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                ),
+                DataColumn(
+                  label: Text('สถานะ',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                ),
+                DataColumn(
+                  label: Text('คะแนน',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                ),
+                DataColumn(
+                  label: Text('วันที่',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                ),
+              ],
+              rows: <DataRow>[
+                DataRow(
+                  cells: <DataCell>[
+                    DataCell(Text('')),
+                    DataCell(Text('')),
+                    DataCell(Text('')),
+                    DataCell(Text('')),
+                    DataCell(Text('')),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
