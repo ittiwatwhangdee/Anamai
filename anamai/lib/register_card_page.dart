@@ -54,15 +54,23 @@ class MyStatelessWidget extends StatelessWidget {
                     style: TextStyle(color: Colors.black.withOpacity(0.6)),
                   ),
                 ),
-                ButtonBar(
-                  alignment: MainAxisAlignment.center,
-                  children: [
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text('ลงทะเบียน'),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                      child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.blue.shade800,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50))),
+                    child: const Text(
+                      'ลงทะเบียน',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
                     ),
-                  ],
-                ),
+                    onPressed: () {},
+                  )),
+                )
               ],
             ),
           ),
@@ -82,15 +90,23 @@ class MyStatelessWidget extends StatelessWidget {
                     style: TextStyle(color: Colors.black.withOpacity(0.6)),
                   ),
                 ),
-                ButtonBar(
-                  alignment: MainAxisAlignment.center,
-                  children: [
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text('ลงทะเบียน'),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                      child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.blue.shade800,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50))),
+                    child: const Text(
+                      'ลงทะเบียน',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
                     ),
-                  ],
-                ),
+                    onPressed: () {},
+                  )),
+                )
                 // Image.asset('assets/images/Announ1.png'),
               ],
             ),
@@ -111,15 +127,23 @@ class MyStatelessWidget extends StatelessWidget {
                     style: TextStyle(color: Colors.black.withOpacity(0.6)),
                   ),
                 ),
-                ButtonBar(
-                  alignment: MainAxisAlignment.center,
-                  children: [
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text('ลงทะเบียน'),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                      child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.blue.shade800,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50))),
+                    child: const Text(
+                      'ลงทะเบียน',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
                     ),
-                  ],
-                ),
+                    onPressed: () {},
+                  )),
+                )
                 // Image.asset('assets/images/Announ1.png'),
               ],
             ),
