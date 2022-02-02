@@ -166,7 +166,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             ListTile(
               leading: Icon(Icons.copyright_outlined),
               title: const Text(
-                'ตรวจสอบคะแนน',
+                'Health Point',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               trailing: Icon(Icons.arrow_right),
