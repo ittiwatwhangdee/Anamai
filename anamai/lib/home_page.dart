@@ -1,10 +1,9 @@
 import 'package:anamai/mycard_page.dart';
 import 'package:anamai/register_card_page.dart';
-
 import 'announcement_page.dart';
-import 'forgot_password_page.dart';
 import 'health_point_page.dart';
 import 'notification_page.dart';
+import 'profile_page.dart';
 import 'request_page.dart';
 import 'package:flutter/material.dart';
 import 'login_page.dart';
@@ -191,24 +190,23 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 );
               },
             ),
-            // ListTile(
-            //   leading: Icon(Icons.restart_alt_outlined),
-            //   title: const Text(
-            //     'เปลี่ยนรหัสผ่าน',
-            //     style: TextStyle(fontWeight: FontWeight.bold),
-            //   ),
-            //   trailing: Icon(Icons.arrow_right),
-            //   onTap: () {
-            //     // Update the state of the app
-            //     // ...
-            //     // Then close the drawer
-            //     Navigator.push(
-            //       context,
-            //       MaterialPageRoute(
-            //           builder: (context) => const ForgotPasswordPage()),
-            //     );
-            //   },
-            // ),
+            ListTile(
+              leading: Icon(Icons.account_circle_outlined),
+              title: const Text(
+                'ข้อมูลส่วนตัว',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              trailing: Icon(Icons.arrow_right),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProfilePage()),
+                );
+              },
+            ),
             ListTile(
               leading: Icon(Icons.logout_outlined),
               title: const Text(
