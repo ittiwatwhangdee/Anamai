@@ -1,10 +1,11 @@
 import 'package:anamai/mycard_page.dart';
 import 'package:anamai/register_card_page.dart';
 import 'announcement_page.dart';
+import 'complaint_page.dart';
 import 'health_point_page.dart';
 import 'notification_page.dart';
 import 'profile_page.dart';
-import 'request_page.dart';
+import 'complaint_status_page.dart';
 import 'package:flutter/material.dart';
 import 'login_page.dart';
 
@@ -178,6 +179,21 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const HealthPoint()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.switch_account_outlined),
+              title: const Text(
+                'แจ้งร้องเรียน',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              trailing: Icon(Icons.arrow_right),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ComplaintPage()),
                 );
               },
             ),
