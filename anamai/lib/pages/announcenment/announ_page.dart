@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../home_page.dart';
+import 'announ_tabbar_page.dart';
+
 class AnnouncenmentPage extends StatefulWidget {
   const AnnouncenmentPage({Key? key}) : super(key: key);
 
@@ -21,7 +24,10 @@ class _AnnouncenmentPageState extends State<AnnouncenmentPage> {
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const HomePage()),
+              );
             },
             icon: const Icon(Icons.arrow_back_ios_new_outlined),
           ),
@@ -73,7 +79,14 @@ class MyStatelessWidget extends StatelessWidget {
                         alignment: MainAxisAlignment.start,
                         children: [
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const NotificationPage()),
+                              );
+                            },
                             child: const Text('อ่านเพิ่มเติม >'),
                           ),
                         ],

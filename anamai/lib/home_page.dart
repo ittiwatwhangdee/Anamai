@@ -1,6 +1,6 @@
 import 'package:anamai/mycard_page.dart';
 import 'package:anamai/register_card_page.dart';
-import 'pages/announcenment/announcement_page.dart';
+import 'pages/announcenment/announ_page.dart';
 import 'complaint_page.dart';
 import 'health_point_page.dart';
 import 'pages/notifications/noti_page.dart';
