@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -117,6 +118,10 @@ class MyStatelessWidget extends StatelessWidget {
                       decoration: InputDecoration(
                     hintText: 'รหัสผ่าน',
                     border: OutlineInputBorder(),
+                    suffixIcon: Icon(
+                      FontAwesomeIcons.eyeSlash,
+                      size: 17,
+                    ),
                   )),
                   Divider(),
 
@@ -125,6 +130,10 @@ class MyStatelessWidget extends StatelessWidget {
                       decoration: InputDecoration(
                     hintText: 'ยืนยันรหัสผ่าน',
                     border: OutlineInputBorder(),
+                    suffixIcon: Icon(
+                      FontAwesomeIcons.eyeSlash,
+                      size: 17,
+                    ),
                   )),
                   Divider(),
 
