@@ -53,7 +53,84 @@ class MyStatelessWidget extends StatelessWidget {
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: ListView(padding: EdgeInsets.all(4), children: <Widget>[
                   Container(
-                    padding: EdgeInsets.fromLTRB(0, 12, 8, 20),
+                    padding: EdgeInsets.fromLTRB(0, 3, 8, 20),
+                    child: Text(
+                      'ข้อมูลส่วนตัว',
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+
+                  ///รหัสบัตรประจำตัวประชาชน
+                  TextField(
+                      decoration: InputDecoration(
+                    hintText: 'รหัสบัตรประจำตัวประชาชน',
+                    // counterText: '0/13',
+                    border: OutlineInputBorder(),
+                  )),
+                  Divider(),
+
+                  ///หน่วยงานร้องเรียน
+                  DropdownSearch<String>(
+                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                    dropdownSearchDecoration: InputDecoration(
+                      hintText: "กรุณาเลือกคำนำหน้า",
+                      labelText: "คำนำหน้า*",
+                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                      border: OutlineInputBorder(),
+                    ),
+                    mode: Mode.MENU,
+                    showSelectedItems: true,
+                    items: [
+                      "นางสาว",
+                      "นาง",
+                      "นาย",
+                    ],
+                    showClearButton: true,
+                    onChanged: print,
+                    popupItemDisabled: (String? s) =>
+                        s?.startsWith('I') ?? false,
+                    clearButtonSplashRadius: 20,
+                    selectedItem: "กรุณาเลือกคำนำหน้า",
+                  ),
+                  Divider(),
+
+                  ///ชื่อ
+                  TextField(
+                      decoration: InputDecoration(
+                    hintText: 'ชื่อ',
+                    border: OutlineInputBorder(),
+                  )),
+                  Divider(),
+
+                  ///นามสกุล
+                  TextField(
+                      decoration: InputDecoration(
+                    hintText: 'นามสกุล',
+                    border: OutlineInputBorder(),
+                  )),
+                  Divider(),
+
+                  ///เบอร์โทรศัพท์
+                  TextField(
+                      decoration: InputDecoration(
+                    hintText: 'เบอร์โทรศัพท์',
+                    border: OutlineInputBorder(),
+                  )),
+                  Divider(),
+
+                  ///เบอร์โทรศัพท์
+                  TextField(
+                      decoration: InputDecoration(
+                    hintText: 'อีเมล',
+                    border: OutlineInputBorder(),
+                  )),
+                  Divider(),
+
+                  Container(
+                    padding: EdgeInsets.fromLTRB(0, 3, 8, 20),
                     child: Text(
                       'รายละเอียดการร้องเรียน',
                       style: TextStyle(
