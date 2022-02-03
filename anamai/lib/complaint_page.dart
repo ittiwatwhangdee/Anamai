@@ -52,6 +52,17 @@ class MyStatelessWidget extends StatelessWidget {
                 key: _formKey,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: ListView(padding: EdgeInsets.all(4), children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.fromLTRB(0, 12, 8, 20),
+                    child: Text(
+                      'รายละเอียดการร้องเรียน',
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+
                   ///หน่วยงานร้องเรียน
                   DropdownSearch<String>(
                     validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
