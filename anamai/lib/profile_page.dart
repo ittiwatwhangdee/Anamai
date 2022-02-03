@@ -1,6 +1,6 @@
-import 'package:anamai/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -10,10 +10,45 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        fontFamily: 'SFProTH_regular',
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back_ios_new_outlined),
+          ),
+          title: const Text(
+            'ข้อมูลส่วนตัว',
+            style: TextStyle(
+              fontSize: 18,
+            ),
+          ),
+          backgroundColor: Colors.blue[800],
+        ),
+        body: MyStatelessWidget(),
+      ),
+    );
+  }
+}
+
+class MyStatelessWidget extends StatefulWidget {
+  MyStatelessWidget({Key? key}) : super(key: key);
+
+  @override
+  _MyStatelessWidgetState createState() => _MyStatelessWidgetState();
+}
+
+class _MyStatelessWidgetState extends State<MyStatelessWidget> {
   final _formKey = GlobalKey<FormState>();
-  final _openDropDownProgKey = GlobalKey<DropdownSearchState<String>>();
-  final _multiKey = GlobalKey<DropdownSearchState<String>>();
-  final _userEditTextController = TextEditingController(text: 'Mrs');
+  bool _passwordVisible = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,9 +59,62 @@ class _ProfilePageState extends State<ProfilePage> {
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: ListView(padding: EdgeInsets.all(4), children: <Widget>[
                   Container(
-                    padding: EdgeInsets.fromLTRB(0, 3, 8, 20),
+                    child: Text(
+                      'อัพโหลดรูปติดบัตร',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 21,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Divider(),
+
+                  Image.asset(
+                    'assets/images/LogoAnamai.png',
+                    height: 120,
+                    width: 170,
+                  ),
+
+                  Divider(),
+
+                  GestureDetector(
+                      child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.green,
+                        fixedSize: const Size(250, 43),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10))),
+                    child: const Text(
+                      'เลือกรูปติดบัตร',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    onPressed: () {},
+                  )),
+
+                  SizedBox(
+                    height: 20,
+                  ),
+
+                  Container(
                     child: Text(
                       'ข้อมูลส่วนตัว',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 21,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Divider(),
+
+                  Container(
+                    padding: EdgeInsets.fromLTRB(0, 12, 8, 20),
+                    child: Text(
+                      'ประเภทผู้ใช้งาน',
                       style: TextStyle(
                           fontSize: 18,
                           color: Colors.blue,
@@ -34,20 +122,118 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ),
 
-                  ///รหัสบัตรประจำตัวประชาชน
+                  //เลือกประเภทผู้ใช้งาน
+                  DropdownSearch<String>(
+                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                    dropdownSearchDecoration: InputDecoration(
+                      hintText: "กรุณาเลือก",
+                      labelText: "เลือกประเภทผู้ใช้งาน*",
+                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                      border: OutlineInputBorder(),
+                    ),
+                    mode: Mode.MENU,
+                    showSelectedItems: true,
+                    items: [
+                      "ประชาชน",
+                      "ผู้ประกอบกิจการ",
+                      "ผู้สัมผัสอาหาร",
+                      "เจ้าหน้าที่รัฐ",
+                      "ผู้ดูแลผู้สูงอายุ"
+                          "หน่วยงานอบรม",
+                    ],
+                    showClearButton: true,
+                    onChanged: print,
+                    popupItemDisabled: (String? s) =>
+                        s?.startsWith('I') ?? false,
+                    clearButtonSplashRadius: 20,
+                    selectedItem: "กรุณาเลือก",
+                  ),
+                  Divider(),
+
+                  //เลือกประเภทสมาชิก
+                  DropdownSearch<String>(
+                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                    dropdownSearchDecoration: InputDecoration(
+                      hintText: "กรุณาเลือก",
+                      labelText: "เลือกประเภทสมาชิก*",
+                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                      border: OutlineInputBorder(),
+                    ),
+                    mode: Mode.MENU,
+                    showSelectedItems: true,
+                    items: [
+                      "ประชาชน/พนักงาน",
+                      "สถานประกอบการ/ร้านค้า",
+                    ],
+                    showClearButton: true,
+                    onChanged: print,
+                    popupItemDisabled: (String? s) =>
+                        s?.startsWith('I') ?? false,
+                    clearButtonSplashRadius: 20,
+                    selectedItem: "กรุณาเลือก",
+                  ),
+                  Divider(),
+
+                  //เลือกประเภทบุคคล
+                  DropdownSearch<String>(
+                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                    dropdownSearchDecoration: InputDecoration(
+                      hintText: "กรุณาเลือก",
+                      labelText: "เลือกประเภทบุคคล*",
+                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                      border: OutlineInputBorder(),
+                    ),
+                    mode: Mode.MENU,
+                    showSelectedItems: true,
+                    items: [
+                      "นิติบุคคล",
+                      "บุคคลธรรมดา",
+                      "อื่นๆ",
+                    ],
+                    showClearButton: true,
+                    onChanged: print,
+                    popupItemDisabled: (String? s) =>
+                        s?.startsWith('I') ?? false,
+                    clearButtonSplashRadius: 20,
+                    selectedItem: "กรุณาเลือก",
+                  ),
+                  Divider(),
+
+                  //อื่นๆ*โปรดระบุ
                   TextField(
                       decoration: InputDecoration(
-                    hintText: 'รหัสบัตรประจำตัวประชาชน',
-                    // counterText: '0/13',
+                    hintText: 'อื่นๆ*โปรดระบุ',
+                    // helperText: 'Helper Text',
+                    // counterText: '0 characters',
                     border: OutlineInputBorder(),
                   )),
                   Divider(),
 
-                  ///หน่วยงานร้องเรียน
+                  Container(
+                    padding: EdgeInsets.fromLTRB(0, 12, 8, 20),
+                    child: Text(
+                      'ข้อมูลผู้ใช้งาน',
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+
+                  //รหัสบัตรประจำตัวประชาชน
+                  TextField(
+                      decoration: InputDecoration(
+                    hintText: 'รหัสบัตรประจำตัวประชาชน',
+                    counterText: '0/13',
+                    border: OutlineInputBorder(),
+                  )),
+                  Divider(),
+
+                  //กรุณาเลือกคำนำหน้า
                   DropdownSearch<String>(
                     validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
                     dropdownSearchDecoration: InputDecoration(
-                      hintText: "กรุณาเลือกคำนำหน้า",
+                      hintText: "กรุณาเลือก",
                       labelText: "คำนำหน้า*",
                       contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
                       border: OutlineInputBorder(),
@@ -64,11 +250,11 @@ class _ProfilePageState extends State<ProfilePage> {
                     popupItemDisabled: (String? s) =>
                         s?.startsWith('I') ?? false,
                     clearButtonSplashRadius: 20,
-                    selectedItem: "กรุณาเลือกคำนำหน้า",
+                    selectedItem: "กรุณาเลือก",
                   ),
                   Divider(),
 
-                  ///ชื่อ
+                  //ชื่อ
                   TextField(
                       decoration: InputDecoration(
                     hintText: 'ชื่อ',
@@ -76,7 +262,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   )),
                   Divider(),
 
-                  ///นามสกุล
+                  //นามสกุล
                   TextField(
                       decoration: InputDecoration(
                     hintText: 'นามสกุล',
@@ -84,15 +270,90 @@ class _ProfilePageState extends State<ProfilePage> {
                   )),
                   Divider(),
 
-                  ///เบอร์โทรศัพท์
+                  //เพศ
+                  DropdownSearch<String>(
+                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                    dropdownSearchDecoration: InputDecoration(
+                      hintText: "กรุณาเลือก",
+                      labelText: "เพศ*",
+                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                      border: OutlineInputBorder(),
+                    ),
+                    mode: Mode.MENU,
+                    showSelectedItems: true,
+                    items: [
+                      "ชาย",
+                      "หญิง",
+                    ],
+                    showClearButton: true,
+                    onChanged: print,
+                    popupItemDisabled: (String? s) =>
+                        s?.startsWith('I') ?? false,
+                    clearButtonSplashRadius: 20,
+                    selectedItem: "กรุณาเลือก",
+                  ),
+                  Divider(),
+
+                  //หมู่เลือด
+                  DropdownSearch<String>(
+                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                    dropdownSearchDecoration: InputDecoration(
+                      hintText: "กรุณาเลือก",
+                      labelText: "หมู่เลือด*",
+                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                      border: OutlineInputBorder(),
+                    ),
+                    mode: Mode.MENU,
+                    showSelectedItems: true,
+                    items: [
+                      "เอ",
+                      "บี",
+                      "โอ",
+                      "โอบี",
+                    ],
+                    showClearButton: true,
+                    onChanged: print,
+                    popupItemDisabled: (String? s) =>
+                        s?.startsWith('I') ?? false,
+                    clearButtonSplashRadius: 20,
+                    selectedItem: "กรุณาเลือก",
+                  ),
+                  Divider(),
+
+                  //วัน/เดือน/ปีเกิด
                   TextField(
                       decoration: InputDecoration(
-                    hintText: 'เบอร์โทรศัพท์',
+                    hintText: 'วัน/เดือน/ปีเกิด',
                     border: OutlineInputBorder(),
                   )),
                   Divider(),
 
-                  ///เบอร์โทรศัพท์
+                  //อายุ(ปี)
+                  TextField(
+                      decoration: InputDecoration(
+                    hintText: 'อายุ(ปี)',
+                    border: OutlineInputBorder(),
+                  )),
+                  Divider(),
+
+                  //อายุ(เดือน)
+                  TextField(
+                      decoration: InputDecoration(
+                    hintText: 'อายุ(เดือน)',
+                    border: OutlineInputBorder(),
+                  )),
+                  Divider(),
+
+                  //เบอร์โทรศัพท์
+                  TextField(
+                      decoration: InputDecoration(
+                    hintText: 'เบอร์โทรศัพท์',
+                    counterText: '0/10',
+                    border: OutlineInputBorder(),
+                  )),
+                  Divider(),
+
+                  //อีเมล
                   TextField(
                       decoration: InputDecoration(
                     hintText: 'อีเมล',
@@ -103,7 +364,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   Container(
                     padding: EdgeInsets.fromLTRB(0, 12, 8, 20),
                     child: Text(
-                      'รายละเอียดการร้องเรียน',
+                      'ที่อยู่ปัจจุบัน',
                       style: TextStyle(
                           fontSize: 18,
                           color: Colors.blue,
@@ -111,100 +372,26 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ),
 
-                  ///หน่วยงานร้องเรียน
-                  DropdownSearch<String>(
-                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
-                    dropdownSearchDecoration: InputDecoration(
-                      hintText: "กรุณาเลือกหน่วยงานร้องเรียน",
-                      labelText: "หน่วยงานร้องเรียน*",
-                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
-                      border: OutlineInputBorder(),
-                    ),
-                    mode: Mode.MENU,
-                    showSelectedItems: true,
-                    items: [
-                      "หน่วยงานร้องเรียน",
-                      "ประชาชน",
-                      "ผู้ประกอบกิจการ",
-                      "ผู้สัมผัสอาหาร",
-                      "เจ้าหน้าที่รัฐ",
-                      "ผู้ดูแลผู้สูงอายุ"
-                    ],
-                    showClearButton: true,
-                    onChanged: print,
-                    popupItemDisabled: (String? s) =>
-                        s?.startsWith('I') ?? false,
-                    clearButtonSplashRadius: 20,
-                    selectedItem: "กรุณาเลือกหน่วยงานร้องเรียน",
-                  ),
-                  Divider(),
-
-                  ///หมวดหมู่ร้องเรียน
-                  DropdownSearch<String>(
-                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
-                    dropdownSearchDecoration: InputDecoration(
-                      hintText: "กรุณาเลือกหมวดหมู่ร้องเรียน",
-                      labelText: "หมวดหมู่ร้องเรียน*",
-                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
-                      border: OutlineInputBorder(),
-                    ),
-                    mode: Mode.MENU,
-                    showSelectedItems: true,
-                    items: [
-                      "บัตรประจำตัวผู้ประกอบกิจการและผู้สัมผัสอาหาร",
-                      "บัตรประจำตัวเจ้าพนักงานท้องถิ่น เจ้าพนักงานสาธารณสุข ผู้ซึ่งได้รับการแต่งตั้ง",
-                      "บัตรประจำตัวพนักงานเจ้าหน้าที่ตามพระราชบัญญัติควบคุมการส่งเสริมการตลาดอาหาร",
-                      "บัตรประจำตัวผู้จัดการ การดูแลผู้สูงอายุ (Care Manager) และผู้ดูแลผู้สูงอายุ",
-                    ],
-                    showClearButton: true,
-                    onChanged: print,
-                    popupItemDisabled: (String? s) =>
-                        s?.startsWith('I') ?? false,
-                    clearButtonSplashRadius: 20,
-                    selectedItem: "กรุณาเลือกหมวดหมู่ร้องเรียน",
-                  ),
-                  Divider(),
-
-                  ///หัวข้อการร้องเรียน
-                  DropdownSearch<String>(
-                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
-                    dropdownSearchDecoration: InputDecoration(
-                      hintText: "กรุณาเลือกหัวข้อการร้องเรียน",
-                      labelText: "หัวข้อการร้องเรียน*",
-                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
-                      border: OutlineInputBorder(),
-                    ),
-                    mode: Mode.MENU,
-                    showSelectedItems: true,
-                    items: [
-                      "ทดสอบชื่อหัวข้อการร้องเรียน(1)",
-                      "ทดสอบชื่อหัวข้อการร้องเรียน(2)",
-                      "ทดสอบชื่อหัวข้อการร้องเรียน(3)",
-                      "ทดสอบชื่อหัวข้อการร้องเรียน(4)",
-                    ],
-                    showClearButton: true,
-                    onChanged: print,
-                    popupItemDisabled: (String? s) =>
-                        s?.startsWith('I') ?? false,
-                    clearButtonSplashRadius: 20,
-                    selectedItem: "กรุณาเลือกหัวข้อการร้องเรียน",
-                  ),
-                  Divider(),
-
-                  ///รายละเอียดการร้องเรียน
+                  //บ้านเลขที่
                   TextField(
                       decoration: InputDecoration(
-                    hintText: 'รายละเอียดการร้องเรียน',
-                    // helperText: 'Helper Text',
-                    // counterText: '0 characters',
+                    hintText: 'บ้านเลขที่',
                     border: OutlineInputBorder(),
                   )),
                   Divider(),
 
-                  ///รายละเอียดการร้องเรียน
+                  //หมู่
                   TextField(
                       decoration: InputDecoration(
-                    hintText: 'สถานที่ต้องการร้องเรียน',
+                    hintText: 'หมู่',
+                    border: OutlineInputBorder(),
+                  )),
+                  Divider(),
+
+                  //ถนน
+                  TextField(
+                      decoration: InputDecoration(
+                    hintText: 'ถนน',
                     border: OutlineInputBorder(),
                   )),
                   Divider(),
@@ -213,7 +400,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   DropdownSearch<String>(
                     validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
                     dropdownSearchDecoration: InputDecoration(
-                      hintText: "กรุณาเลือกจังหวัด",
+                      hintText: "กรุณาเลือกจังหวัดก่อน",
                       labelText: "จังหวัด*",
                       contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
                       border: OutlineInputBorder(),
@@ -231,7 +418,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     popupItemDisabled: (String? s) =>
                         s?.startsWith('I') ?? false,
                     clearButtonSplashRadius: 20,
-                    selectedItem: "กรุณาเลือกจังหวัด",
+                    selectedItem: "กรุณาเลือกจังหวัดก่อน",
                   ),
                   Divider(),
 
@@ -239,7 +426,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   DropdownSearch<String>(
                     validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
                     dropdownSearchDecoration: InputDecoration(
-                      hintText: "กรุณาเลือกอำเภอ",
+                      hintText: "กรุณาเลือกอำเภอ/เขตก่อน",
                       labelText: "อำเภอ/เขต*",
                       contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
                       border: OutlineInputBorder(),
@@ -257,33 +444,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     popupItemDisabled: (String? s) =>
                         s?.startsWith('I') ?? false,
                     clearButtonSplashRadius: 20,
-                    selectedItem: "กรุณาเลือกอำเภอ",
-                  ),
-                  Divider(),
-
-                  //อำเภอ/เขต
-                  DropdownSearch<String>(
-                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
-                    dropdownSearchDecoration: InputDecoration(
-                      hintText: "กรุณาเลือกตำบล",
-                      labelText: "ตำบล*",
-                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
-                      border: OutlineInputBorder(),
-                    ),
-                    mode: Mode.MENU,
-                    showSelectedItems: true,
-                    items: [
-                      "-",
-                      "-",
-                      "-",
-                      "-",
-                    ],
-                    showClearButton: true,
-                    onChanged: print,
-                    popupItemDisabled: (String? s) =>
-                        s?.startsWith('I') ?? false,
-                    clearButtonSplashRadius: 20,
-                    selectedItem: "กรุณาเลือกตำบล",
+                    selectedItem: "กรุณาเลือกอำเภอ/เขตก่อน",
                   ),
                   Divider(),
 
@@ -296,66 +457,43 @@ class _ProfilePageState extends State<ProfilePage> {
                   Divider(),
 
                   Container(
-                    padding: EdgeInsets.fromLTRB(0, 10, 5, 25),
+                    padding: EdgeInsets.fromLTRB(0, 12, 8, 20),
                     child: Text(
-                      'Location',
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-
-                  Container(
-                    padding: EdgeInsets.fromLTRB(0, 15, 8, 8),
-                    child: Text(
-                      'แนบไฟล์',
+                      'ยันยันรหัสผ่าน',
                       style: TextStyle(
                           fontSize: 18,
-                          color: Colors.black,
+                          color: Colors.blue,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
 
-                  Container(
-                    padding: EdgeInsets.fromLTRB(0, 0, 8, 20),
-                    child: Text(
-                      '( pdf, png, jpg, jpeg, mp4, avi, wmv, mov, flv )',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.red,
+                  TextFormField(
+                    obscureText:
+                        !_passwordVisible, //This will obscure text dynamically
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'ยืนยันรหัสผ่าน',
+                      hintText: 'กรุณากรอก',
+                      // Here is key idea
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          // Based on passwordVisible state choose the icon
+                          _passwordVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: Theme.of(context).primaryColorDark,
+                        ),
+                        onPressed: () {
+                          // Update the state i.e. toogle the state of passwordVisible variable
+                          setState(() {
+                            _passwordVisible = !_passwordVisible;
+                          });
+                        },
                       ),
                     ),
                   ),
 
-                  Container(
-                    padding: EdgeInsets.fromLTRB(0, 15, 8, 25),
-                    child: Text(
-                      'ไม่ได้เลือกไฟล์',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-
-                  GestureDetector(
-                      child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.green[400],
-                        fixedSize: const Size(250, 43),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5))),
-                    child: const Text(
-                      'เลือกไฟล์',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    onPressed: () {},
-                  )),
+                  Divider(),
 
                   SizedBox(
                     height: 20,
@@ -367,9 +505,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         primary: Colors.blue,
                         fixedSize: const Size(250, 43),
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5))),
+                            borderRadius: BorderRadius.circular(10))),
                     child: const Text(
-                      'ส่งเรื่องร้องเรียน',
+                      'แก้ไขข้อมูลส่วนตัว',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 17,

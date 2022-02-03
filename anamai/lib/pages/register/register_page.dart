@@ -119,7 +119,7 @@ class MyStatelessWidget extends StatelessWidget {
                     hintText: 'รหัสผ่าน',
                     border: OutlineInputBorder(),
                     suffixIcon: Icon(
-                      FontAwesomeIcons.eyeSlash,
+                      Icons.visibility_off,
                       size: 17,
                     ),
                   )),
@@ -131,7 +131,7 @@ class MyStatelessWidget extends StatelessWidget {
                     hintText: 'ยืนยันรหัสผ่าน',
                     border: OutlineInputBorder(),
                     suffixIcon: Icon(
-                      FontAwesomeIcons.eyeSlash,
+                      Icons.visibility_off,
                       size: 17,
                     ),
                   )),
