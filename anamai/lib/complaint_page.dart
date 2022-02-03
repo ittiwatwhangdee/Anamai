@@ -104,6 +104,51 @@ class MyStatelessWidget extends StatelessWidget {
                     clearButtonSplashRadius: 20,
                     selectedItem: "กรุณาเลือกหมวดหมู่ร้องเรียน",
                   ),
+                  Divider(),
+
+                  ///หัวข้อการร้องเรียน
+                  DropdownSearch<String>(
+                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                    dropdownSearchDecoration: InputDecoration(
+                      hintText: "กรุณาเลือกหัวข้อการร้องเรียน",
+                      labelText: "หัวข้อการร้องเรียน*",
+                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                      border: OutlineInputBorder(),
+                    ),
+                    mode: Mode.MENU,
+                    showSelectedItems: true,
+                    items: [
+                      "ทดสอบชื่อหัวข้อการร้องเรียน(1)",
+                      "ทดสอบชื่อหัวข้อการร้องเรียน(2)",
+                      "ทดสอบชื่อหัวข้อการร้องเรียน(3)",
+                      "ทดสอบชื่อหัวข้อการร้องเรียน(4)",
+                    ],
+                    showClearButton: true,
+                    onChanged: print,
+                    popupItemDisabled: (String? s) =>
+                        s?.startsWith('I') ?? false,
+                    clearButtonSplashRadius: 20,
+                    selectedItem: "กรุณาเลือกหัวข้อการร้องเรียน",
+                  ),
+                  Divider(),
+
+                  ///รายละเอียดการร้องเรียน
+                  TextField(
+                      decoration: InputDecoration(
+                    hintText: 'รายละเอียดการร้องเรียน',
+                    // helperText: 'Helper Text',
+                    // counterText: '0 characters',
+                    border: OutlineInputBorder(),
+                  )),
+                  Divider(),
+
+                  ///รายละเอียดการร้องเรียน
+                  TextField(
+                      decoration: InputDecoration(
+                    hintText: 'สถานที่ต้องการร้องเรียน',
+                    border: OutlineInputBorder(),
+                  )),
+                  Divider(),
                 ]))));
   }
 }
