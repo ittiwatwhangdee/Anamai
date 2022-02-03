@@ -323,6 +323,66 @@ class MyStatelessWidget extends StatelessWidget {
                     border: OutlineInputBorder(),
                   )),
                   Divider(),
+
+                  Container(
+                    padding: EdgeInsets.fromLTRB(0, 15, 8, 8),
+                    child: Text(
+                      'แนบไฟล์',
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+
+                  Container(
+                    padding: EdgeInsets.fromLTRB(0, 0, 8, 20),
+                    child: Text(
+                      '( pdf, png, jpg, jpeg, mp4, avi, wmv, mov, flv)',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.red,
+                      ),
+                    ),
+                  ),
+
+                  GestureDetector(
+                      child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.green[400],
+                        fixedSize: const Size(250, 43),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50))),
+                    child: const Text(
+                      'เลือกไฟล์',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    onPressed: () {},
+                  )),
+
+                  SizedBox(
+                    height: 20,
+                  ),
+
+                  GestureDetector(
+                      child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.blue,
+                        fixedSize: const Size(250, 43),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50))),
+                    child: const Text(
+                      'ส่งเรื่องร้องเรียน',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    onPressed: () {},
+                  ))
                 ]))));
   }
 }
