@@ -325,6 +325,17 @@ class MyStatelessWidget extends StatelessWidget {
                   Divider(),
 
                   Container(
+                    padding: EdgeInsets.fromLTRB(0, 10, 5, 25),
+                    child: Text(
+                      'Location',
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+
+                  Container(
                     padding: EdgeInsets.fromLTRB(0, 15, 8, 8),
                     child: Text(
                       'แนบไฟล์',
@@ -338,10 +349,22 @@ class MyStatelessWidget extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.fromLTRB(0, 0, 8, 20),
                     child: Text(
-                      '( pdf, png, jpg, jpeg, mp4, avi, wmv, mov, flv)',
+                      '( pdf, png, jpg, jpeg, mp4, avi, wmv, mov, flv )',
                       style: TextStyle(
                         fontSize: 15,
                         color: Colors.red,
+                      ),
+                    ),
+                  ),
+
+                  Container(
+                    padding: EdgeInsets.fromLTRB(0, 15, 8, 25),
+                    child: Text(
+                      'ไม่ได้เลือกไฟล์',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
                       ),
                     ),
                   ),
