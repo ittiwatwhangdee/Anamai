@@ -1,14 +1,12 @@
-import 'package:anamai/noti_news_page.dart';
-
-import 'home_page.dart';
 import 'package:flutter/material.dart';
+import '../../home_page.dart';
+import 'noti_mycard_page.dart';
+import 'noti_news_page.dart';
 
 void main() => runApp(const NotificationPage());
 
 class NotificationPage extends StatefulWidget {
   const NotificationPage({Key? key}) : super(key: key);
-
-  static const String _title = 'Flutter Code Sample';
 
   @override
   _NotificationPageState createState() => _NotificationPageState();
@@ -18,7 +16,6 @@ class _NotificationPageState extends State<NotificationPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: NotificationPage._title,
       theme: ThemeData(fontFamily: 'SFProTH_regular'),
       home: MyStatefulWidget(),
     );
@@ -57,7 +54,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
           },
           icon: Icon(Icons.arrow_back_ios_new_outlined),
         ),
-        title: const Text('แจ้งเตือน'),
+        title: const Text(
+          'แจ้งเตือน',
+          style: TextStyle(
+            fontSize: 18,
+          ),
+        ),
         backgroundColor: Colors.blue[800],
         bottom: TabBar(
           controller: _tabController,
@@ -78,38 +80,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
       body: TabBarView(
         controller: _tabController,
         children: <Widget>[
-          NewsPage(),
-          MyCard(),
-        ],
-      ),
-    );
-  }
-}
-
-class NewsPage extends StatelessWidget {
-  NewsPage({Key? key}) : super(key: key);
-
-  bool pressAttention = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Center(
-            child: Text("แจ้งเตือนข่าว"),
-          ),
-          new RaisedButton(
-              child: new Text('Attention'),
-              textColor: Colors.white,
-              shape: new RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(30.0),
-              ),
-              color: pressAttention ? Colors.grey : Colors.blue,
-              onPressed: () {
-                pressAttention = !pressAttention;
-                print(pressAttention);
-              })
+          NotificationNewsPage(),
+          NotificationMyCardPage(),
         ],
       ),
     );

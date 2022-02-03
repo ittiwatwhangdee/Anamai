@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MyCard extends StatefulWidget {
-  const MyCard({Key? key}) : super(key: key);
+class NotificationMyCardPage extends StatefulWidget {
+  const NotificationMyCardPage({Key? key}) : super(key: key);
 
   @override
-  _MyCardState createState() => _MyCardState();
+  _NotificationMyCardPageState createState() => _NotificationMyCardPageState();
 }
 
-class _MyCardState extends State<MyCard> {
+class _NotificationMyCardPageState extends State<NotificationMyCardPage> {
   bool pressAttention = false;
   @override
   Widget build(BuildContext context) {

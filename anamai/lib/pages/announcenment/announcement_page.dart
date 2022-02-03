@@ -51,7 +51,7 @@ class MyStatelessWidget extends StatelessWidget {
       body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListView.builder(
-            itemCount: 3,
+            itemCount: 2,
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
