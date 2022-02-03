@@ -48,7 +48,8 @@ class _AnnouncenmentPageState extends State<AnnouncenmentPage> {
 class MyStatelessWidget extends StatelessWidget {
   const MyStatelessWidget({Key? key}) : super(key: key);
 
-  final String title = 'บะหมี่กึ่งสำเร็จรูปโซเดียมสูง';
+  final String title =
+      'บัตรพนักงานเจ้าหน้าที่ตาม พ.ร.บควบคุมการส่งเสริมการตลาดอาหารสำหรับทารกและเด็ก';
   final String date = '2 กุมภาพันธ์ พ.ศ.2565';
 
   @override
@@ -65,15 +66,10 @@ class MyStatelessWidget extends StatelessWidget {
                   clipBehavior: Clip.antiAlias,
                   child: Column(
                     children: [
-                      Image.asset('assets/images/Announ1.png'),
+                      Image.asset('assets/images/Card1.png'),
                       ListTile(
                         // leading: Image.asset('assets/images/LogoAnamai.png'),
                         title: Text('$title'),
-                        subtitle: Text(
-                          '$date',
-                          style:
-                              TextStyle(color: Colors.black.withOpacity(0.6)),
-                        ),
                       ),
                       ButtonBar(
                         alignment: MainAxisAlignment.start,
@@ -87,7 +83,7 @@ class MyStatelessWidget extends StatelessWidget {
                                         const NotificationPage()),
                               );
                             },
-                            child: const Text('อ่านเพิ่มเติม >'),
+                            child: const Text('รายละเอียด >'),
                           ),
                         ],
                       ),
