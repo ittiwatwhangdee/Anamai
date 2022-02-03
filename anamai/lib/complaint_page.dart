@@ -130,7 +130,7 @@ class MyStatelessWidget extends StatelessWidget {
                   Divider(),
 
                   Container(
-                    padding: EdgeInsets.fromLTRB(0, 3, 8, 20),
+                    padding: EdgeInsets.fromLTRB(0, 12, 8, 20),
                     child: Text(
                       'รายละเอียดการร้องเรียน',
                       style: TextStyle(
@@ -234,6 +234,92 @@ class MyStatelessWidget extends StatelessWidget {
                   TextField(
                       decoration: InputDecoration(
                     hintText: 'สถานที่ต้องการร้องเรียน',
+                    border: OutlineInputBorder(),
+                  )),
+                  Divider(),
+
+                  ///จังหวัด
+                  DropdownSearch<String>(
+                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                    dropdownSearchDecoration: InputDecoration(
+                      hintText: "กรุณาเลือกจังหวัด",
+                      labelText: "จังหวัด*",
+                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                      border: OutlineInputBorder(),
+                    ),
+                    mode: Mode.MENU,
+                    showSelectedItems: true,
+                    items: [
+                      "เชียงใหม่",
+                      "เชียงราย",
+                      "เพชรบุรี",
+                      "เพชรบูรณ์",
+                    ],
+                    showClearButton: true,
+                    onChanged: print,
+                    popupItemDisabled: (String? s) =>
+                        s?.startsWith('I') ?? false,
+                    clearButtonSplashRadius: 20,
+                    selectedItem: "กรุณาเลือกจังหวัด",
+                  ),
+                  Divider(),
+
+                  //อำเภอ/เขต
+                  DropdownSearch<String>(
+                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                    dropdownSearchDecoration: InputDecoration(
+                      hintText: "กรุณาเลือกอำเภอ",
+                      labelText: "อำเภอ/เขต*",
+                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                      border: OutlineInputBorder(),
+                    ),
+                    mode: Mode.MENU,
+                    showSelectedItems: true,
+                    items: [
+                      "-",
+                      "-",
+                      "-",
+                      "-",
+                    ],
+                    showClearButton: true,
+                    onChanged: print,
+                    popupItemDisabled: (String? s) =>
+                        s?.startsWith('I') ?? false,
+                    clearButtonSplashRadius: 20,
+                    selectedItem: "กรุณาเลือกอำเภอ",
+                  ),
+                  Divider(),
+
+                  //อำเภอ/เขต
+                  DropdownSearch<String>(
+                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                    dropdownSearchDecoration: InputDecoration(
+                      hintText: "กรุณาเลือกตำบล",
+                      labelText: "ตำบล*",
+                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                      border: OutlineInputBorder(),
+                    ),
+                    mode: Mode.MENU,
+                    showSelectedItems: true,
+                    items: [
+                      "-",
+                      "-",
+                      "-",
+                      "-",
+                    ],
+                    showClearButton: true,
+                    onChanged: print,
+                    popupItemDisabled: (String? s) =>
+                        s?.startsWith('I') ?? false,
+                    clearButtonSplashRadius: 20,
+                    selectedItem: "กรุณาเลือกตำบล",
+                  ),
+                  Divider(),
+
+                  ///รหัสไปรษณีย์
+                  TextField(
+                      decoration: InputDecoration(
+                    hintText: 'รหัสไปรษณีย์',
                     border: OutlineInputBorder(),
                   )),
                   Divider(),
