@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 
-class ComplaintPage extends StatefulWidget {
-  const ComplaintPage({Key? key}) : super(key: key);
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key}) : super(key: key);
 
-  static const String _title = 'แจ้งร้องเรียน';
+  static const String _title = 'ลงทะเบียน';
 
   @override
-  _ComplaintPageState createState() => _ComplaintPageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _ComplaintPageState extends State<ComplaintPage> {
+class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: ComplaintPage._title,
+      title: RegisterPage._title,
       theme: ThemeData(
         fontFamily: 'SFProTH_regular',
       ),
@@ -26,7 +26,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
             },
             icon: Icon(Icons.arrow_back_ios_new_outlined),
           ),
-          title: const Text(ComplaintPage._title),
+          title: const Text(RegisterPage._title),
           backgroundColor: Colors.blue[800],
         ),
         body: MyStatelessWidget(),

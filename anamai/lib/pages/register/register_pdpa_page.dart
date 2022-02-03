@@ -1,20 +1,21 @@
 import 'package:anamai/login_page.dart';
+import 'package:anamai/pages/register/register_page.dart';
 import 'package:flutter/material.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+class RegisterPdpaPage extends StatefulWidget {
+  const RegisterPdpaPage({Key? key}) : super(key: key);
 
   static const String _title = 'ข้อกําหนดและเงื่อนไขการใช้บริการ';
 
   @override
-  _RegisterPageState createState() => _RegisterPageState();
+  _RegisterPdpaPageState createState() => _RegisterPdpaPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _RegisterPdpaPageState extends State<RegisterPdpaPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: RegisterPage._title,
+      title: RegisterPdpaPage._title,
       theme: ThemeData(
         fontFamily: 'SFProTH_regular',
       ),
@@ -27,7 +28,7 @@ class _RegisterPageState extends State<RegisterPage> {
             icon: const Icon(Icons.arrow_back_ios_new_outlined),
           ),
           title: const Text(
-            RegisterPage._title,
+            RegisterPdpaPage._title,
             style: TextStyle(
               fontSize: 18,
             ),
@@ -347,7 +348,13 @@ class MyStatelessWidget extends StatelessWidget {
                           borderRadius: BorderRadius.all(Radius.circular(50)),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const RegisterPage()),
+                        );
+                      },
                       child: Text(
                         'ยอมรับ',
                         style: TextStyle(
