@@ -352,7 +352,7 @@ class MyStatelessWidget extends StatelessWidget {
                         primary: Colors.green[400],
                         fixedSize: const Size(250, 43),
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50))),
+                            borderRadius: BorderRadius.circular(5))),
                     child: const Text(
                       'เลือกไฟล์',
                       style: TextStyle(
@@ -373,7 +373,7 @@ class MyStatelessWidget extends StatelessWidget {
                         primary: Colors.blue,
                         fixedSize: const Size(250, 43),
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50))),
+                            borderRadius: BorderRadius.circular(5))),
                     child: const Text(
                       'ส่งเรื่องร้องเรียน',
                       style: TextStyle(
