@@ -62,23 +62,22 @@ class MyStatelessWidget extends StatelessWidget {
                     ),
                   ),
                   Divider(),
-                  Icon(
-                    Icons.account_circle,
-                    size: 150.0,
+
+                  Image.asset(
+                    'assets/images/icon_user.png',
+                    height: 120,
+                    width: 170,
                   ),
-                  // Image.asset(
-                  //   'assets/images/LogoAnamai.png',
-                  //   height: 120,
-                  //   width: 170,
-                  // ),
+
                   Divider(),
+
                   GestureDetector(
                       child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         primary: Colors.green,
-                        fixedSize: const Size(43, 43),
+                        fixedSize: const Size(250, 43),
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5))),
+                            borderRadius: BorderRadius.circular(10))),
                     child: const Text(
                       'เลือกรูปติดบัตร',
                       style: TextStyle(
@@ -484,7 +483,7 @@ class MyStatelessWidget extends StatelessWidget {
                         primary: Colors.grey,
                         fixedSize: const Size(250, 43),
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5))),
+                            borderRadius: BorderRadius.circular(10))),
                     child: const Text(
                       'ย้อนกลับ',
                       style: TextStyle(
@@ -505,7 +504,7 @@ class MyStatelessWidget extends StatelessWidget {
                         primary: Colors.blue,
                         fixedSize: const Size(250, 43),
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5))),
+                            borderRadius: BorderRadius.circular(10))),
                     child: const Text(
                       'ขอ OTP ยืนยันการสมัคร',
                       style: TextStyle(
