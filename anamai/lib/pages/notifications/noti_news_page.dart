@@ -8,28 +8,36 @@ class NotificationNewsPage extends StatefulWidget {
 }
 
 class _NotificationNewsPageState extends State<NotificationNewsPage> {
-  bool pressAttention = false;
+  final icons = [Icons.ac_unit, Icons.access_alarm, Icons.access_time];
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Center(
-            child: Text("แจ้งเตือนข่าว"),
+    return ListView(
+      children: const <Widget>[
+        Card(
+          child: ListTile(
+            leading: CircleAvatar(
+              backgroundColor: Colors.white,
+              backgroundImage: AssetImage(
+                  "assets/images/LogoAnamai.png"), // no matter how big it is, it won't overflow
+            ),
+            title: Text('กรมอนามัย'),
+            subtitle: Text('แจ้งเตือนโรคซอมบี้ - วันที่ 2 กุมภาพันธ์ 2565'),
+            isThreeLine: true,
           ),
-          new RaisedButton(
-              child: new Text('Attention'),
-              textColor: Colors.white,
-              shape: new RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(30.0),
-              ),
-              color: pressAttention ? Colors.grey : Colors.blue,
-              onPressed: () {
-                pressAttention = !pressAttention;
-                print(pressAttention);
-              })
-        ],
-      ),
+        ),
+        Card(
+          child: ListTile(
+            leading: CircleAvatar(
+              backgroundColor: Colors.white,
+              backgroundImage: AssetImage(
+                  "assets/images/LogoAnamai.png"), // no matter how big it is, it won't overflow
+            ),
+            title: Text('กรมอนามัย'),
+            subtitle: Text('แจ้งเตือนโรคซอมบี้ - วันที่ 2 กุมภาพันธ์ 2565'),
+            isThreeLine: true,
+          ),
+        ),
+      ],
     );
   }
 }
