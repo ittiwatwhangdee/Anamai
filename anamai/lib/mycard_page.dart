@@ -38,8 +38,14 @@ class _MyCardPageState extends State<MyCardPage> {
   }
 }
 
-class MyStatelessWidget extends StatelessWidget {
+class MyStatelessWidget extends StatefulWidget {
   const MyStatelessWidget({Key? key}) : super(key: key);
+
+  @override
+  _MyStatelessWidgetState createState() => _MyStatelessWidgetState();
+}
+
+class _MyStatelessWidgetState extends State<MyStatelessWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
