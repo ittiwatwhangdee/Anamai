@@ -50,7 +50,8 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
       "title": "หัวข้อ $i",
       "name": "เรื่องร้องเรียน $i",
       "date": "2 ธันวาคม 2565",
-      "status": "",
+      "status": "ขอเอกสารเพิ่มเติม",
+      "attach": "",
     };
   });
 
@@ -71,11 +72,24 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
           sortAscending: _isAscending,
           headingRowColor: MaterialStateProperty.all(Colors.grey[300]),
           columns: [
-            const DataColumn(label: Text('ลำดับ')),
-            const DataColumn(label: Text('หัวข้อการร้องเรียน')),
-            const DataColumn(label: Text('เรื่องร้องเรียน')),
-            const DataColumn(label: Text('วันที่ร้องเรียน')),
-            const DataColumn(label: Text('สถานะการร้องเรียน')),
+            const DataColumn(
+                label: Text('ลำดับ',
+                    style: TextStyle(fontWeight: FontWeight.bold))),
+            const DataColumn(
+                label: Text('หัวข้อการร้องเรียน',
+                    style: TextStyle(fontWeight: FontWeight.bold))),
+            const DataColumn(
+                label: Text('เรื่องร้องเรียน',
+                    style: TextStyle(fontWeight: FontWeight.bold))),
+            const DataColumn(
+                label: Text('วันที่ร้องเรียน',
+                    style: TextStyle(fontWeight: FontWeight.bold))),
+            const DataColumn(
+                label: Text('สถานะการร้องเรียน',
+                    style: TextStyle(fontWeight: FontWeight.bold))),
+            const DataColumn(
+                label: Text('แนบเอกสาร',
+                    style: TextStyle(fontWeight: FontWeight.bold))),
           ],
           rows: _products.map((item) {
             return DataRow(cells: [
@@ -83,6 +97,11 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
               DataCell(Text(item['title'])),
               DataCell(Text(item['name'].toString())),
               DataCell(Text(item['date'].toString())),
+              DataCell(Text(
+                item['status'].toString(),
+                style: TextStyle(
+                    color: Colors.deepPurple[300], fontWeight: FontWeight.bold),
+              )),
               DataCell(IconButton(
                 icon: Icon(Icons.attach_file),
                 onPressed: () {
