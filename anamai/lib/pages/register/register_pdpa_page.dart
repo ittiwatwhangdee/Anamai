@@ -14,29 +14,23 @@ class RegisterPdpaPage extends StatefulWidget {
 class _RegisterPdpaPageState extends State<RegisterPdpaPage> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: RegisterPdpaPage._title,
-      theme: ThemeData(
-        fontFamily: 'SFProTH_regular',
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(Icons.arrow_back_ios_new_outlined),
-          ),
-          title: const Text(
-            RegisterPdpaPage._title,
-            style: TextStyle(
-              fontSize: 18,
-            ),
-          ),
-          backgroundColor: Colors.blue[800],
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios_new_outlined),
         ),
-        body: const MyStatelessWidget(),
+        title: const Text(
+          RegisterPdpaPage._title,
+          style: TextStyle(
+            fontSize: 18,
+          ),
+        ),
+        backgroundColor: Colors.blue[800],
       ),
+      body: const MyStatelessWidget(),
     );
   }
 }

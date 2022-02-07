@@ -12,25 +12,8 @@ class NotificationPage extends StatefulWidget {
   _NotificationPageState createState() => _NotificationPageState();
 }
 
-class _NotificationPageState extends State<NotificationPage> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(fontFamily: 'SFProTH_regular'),
-      home: MyStatefulWidget(),
-    );
-  }
-}
-
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key}) : super(key: key);
-
-  @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
-}
-
 /// AnimationControllers can be created with `vsync: this` because of TickerProviderStateMixin.
-class _MyStatefulWidgetState extends State<MyStatefulWidget>
+class _NotificationPageState extends State<NotificationPage>
     with TickerProviderStateMixin {
   late TabController _tabController;
 

@@ -15,32 +15,26 @@ class AnnouncenmentPage extends StatefulWidget {
 class _AnnouncenmentPageState extends State<AnnouncenmentPage> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: AnnouncenmentPage._title,
-      theme: ThemeData(
-        fontFamily: 'SFProTH_regular',
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const HomePage()),
-              );
-            },
-            icon: const Icon(Icons.arrow_back_ios_new_outlined),
-          ),
-          title: const Text(
-            AnnouncenmentPage._title,
-            style: TextStyle(
-              fontSize: 18,
-            ),
-          ),
-          backgroundColor: Colors.blue[800],
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const HomePage()),
+            );
+          },
+          icon: const Icon(Icons.arrow_back_ios_new_outlined),
         ),
-        body: const MyStatelessWidget(),
+        title: const Text(
+          AnnouncenmentPage._title,
+          style: TextStyle(
+            fontSize: 18,
+          ),
+        ),
+        backgroundColor: Colors.blue[800],
       ),
+      body: const MyStatelessWidget(),
     );
   }
 }

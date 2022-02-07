@@ -14,24 +14,18 @@ class RequestPage extends StatefulWidget {
 class _RequestPageState extends State<RequestPage> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: RequestPage._title,
-      theme: ThemeData(
-        fontFamily: 'SFProTH_regular',
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(Icons.arrow_back_ios_new_outlined),
-          ),
-          title: const Text(RequestPage._title),
-          backgroundColor: Colors.blue[800],
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_ios_new_outlined),
         ),
-        body: MyStatelessWidget(),
+        title: const Text(RequestPage._title),
+        backgroundColor: Colors.blue[800],
       ),
+      body: MyStatelessWidget(),
     );
   }
 }

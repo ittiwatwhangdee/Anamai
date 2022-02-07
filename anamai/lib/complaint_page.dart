@@ -13,24 +13,18 @@ class ComplaintPage extends StatefulWidget {
 class _ComplaintPageState extends State<ComplaintPage> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: ComplaintPage._title,
-      theme: ThemeData(
-        fontFamily: 'SFProTH_regular',
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(Icons.arrow_back_ios_new_outlined),
-          ),
-          title: const Text(ComplaintPage._title),
-          backgroundColor: Colors.blue[800],
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_ios_new_outlined),
         ),
-        body: MyStatelessWidget(),
+        title: const Text(ComplaintPage._title),
+        backgroundColor: Colors.blue[800],
       ),
+      body: MyStatelessWidget(),
     );
   }
 }

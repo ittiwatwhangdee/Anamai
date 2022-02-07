@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../home_page.dart';
-import 'announ_news_page.dart';
-import 'announ_vdo_page.dart';
 import 'announ_page.dart';
 
 void main() => runApp(const AnnouncenmentTabbarPage());
@@ -14,25 +12,8 @@ class AnnouncenmentTabbarPage extends StatefulWidget {
       _AnnouncenmentTabbarPageState();
 }
 
-class _AnnouncenmentTabbarPageState extends State<AnnouncenmentTabbarPage> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(fontFamily: 'SFProTH_regular'),
-      home: MyStatefulWidget(),
-    );
-  }
-}
-
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key}) : super(key: key);
-
-  @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
-}
-
 /// AnimationControllers can be created with `vsync: this` because of TickerProviderStateMixin.
-class _MyStatefulWidgetState extends State<MyStatefulWidget>
+class _AnnouncenmentTabbarPageState extends State<AnnouncenmentTabbarPage>
     with TickerProviderStateMixin {
   late TabController _tabController;
 
@@ -87,6 +68,114 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
           AnnouncenmentVdoPage(),
         ],
       ),
+    );
+  }
+}
+
+class AnnouncenmentNewsPage extends StatefulWidget {
+  const AnnouncenmentNewsPage({Key? key}) : super(key: key);
+
+  @override
+  _AnnouncenmentNewsPageState createState() => _AnnouncenmentNewsPageState();
+}
+
+class _AnnouncenmentNewsPageState extends State<AnnouncenmentNewsPage> {
+  final String title = 'รายงานผลการเฝ้าระวังเชิงรุก';
+  final String date = '2 กุมภาพันธ์ พ.ศ.2565';
+  bool pressAttention = false;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListView.builder(
+            itemCount: 1,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  clipBehavior: Clip.antiAlias,
+                  child: Column(
+                    children: [
+                      Image.asset('assets/images/Announ2.png'),
+                      ListTile(
+                        // leading: Image.asset('assets/images/LogoAnamai.png'),
+                        title: Text('$title'),
+                        subtitle: Text(
+                          '$date',
+                          style:
+                              TextStyle(color: Colors.black.withOpacity(0.6)),
+                        ),
+                      ),
+                      ButtonBar(
+                        alignment: MainAxisAlignment.start,
+                        children: [
+                          TextButton(
+                            onPressed: () {},
+                            child: const Text('อ่านเพิ่มเติม >'),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          )),
+    );
+  }
+}
+
+class AnnouncenmentVdoPage extends StatefulWidget {
+  const AnnouncenmentVdoPage({Key? key}) : super(key: key);
+
+  @override
+  _AnnouncenmentVdoPageState createState() => _AnnouncenmentVdoPageState();
+}
+
+class _AnnouncenmentVdoPageState extends State<AnnouncenmentVdoPage> {
+  final String title = 'พลังผู้สูงวัย ใส่ใจดูแลช่องปาก';
+  final String date = '2 กุมภาพันธ์ พ.ศ.2565';
+  bool pressAttention = false;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListView.builder(
+            itemCount: 1,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  clipBehavior: Clip.antiAlias,
+                  child: Column(
+                    children: [
+                      Image.asset('assets/images/Announ1.png'),
+                      ListTile(
+                        // leading: Image.asset('assets/images/LogoAnamai.png'),
+                        title: Text('$title'),
+                        subtitle: Text(
+                          '$date',
+                          style:
+                              TextStyle(color: Colors.black.withOpacity(0.6)),
+                        ),
+                      ),
+                      ButtonBar(
+                        alignment: MainAxisAlignment.start,
+                        children: [
+                          TextButton(
+                            onPressed: () {},
+                            child: const Text('อ่านเพิ่มเติม >'),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          )),
     );
   }
 }

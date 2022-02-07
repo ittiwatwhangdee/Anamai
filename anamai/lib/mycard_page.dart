@@ -11,29 +11,23 @@ class MyCardPage extends StatefulWidget {
 class _MyCardPageState extends State<MyCardPage> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: MyCardPage._title,
-      theme: ThemeData(
-        fontFamily: 'SFProTH_regular',
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(Icons.arrow_back_ios_new_outlined),
-          ),
-          title: const Text(
-            MyCardPage._title,
-            style: TextStyle(
-              fontSize: 18,
-            ),
-          ),
-          backgroundColor: Colors.blue[800],
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios_new_outlined),
         ),
-        body: const MyStatelessWidget(),
+        title: const Text(
+          MyCardPage._title,
+          style: TextStyle(
+            fontSize: 18,
+          ),
+        ),
+        backgroundColor: Colors.blue[800],
       ),
+      body: const MyStatelessWidget(),
     );
   }
 }
