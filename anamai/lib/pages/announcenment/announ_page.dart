@@ -80,7 +80,7 @@ class MyStatelessWidget extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        const NotificationPage()),
+                                        const AnnouncenmentTabbarPage()),
                               );
                             },
                             child: const Text('รายละเอียด >'),

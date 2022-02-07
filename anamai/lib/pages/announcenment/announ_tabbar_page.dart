@@ -4,16 +4,17 @@ import 'announ_news_page.dart';
 import 'announ_vdo_page.dart';
 import 'announ_page.dart';
 
-void main() => runApp(const NotificationPage());
+void main() => runApp(const AnnouncenmentTabbarPage());
 
-class NotificationPage extends StatefulWidget {
-  const NotificationPage({Key? key}) : super(key: key);
+class AnnouncenmentTabbarPage extends StatefulWidget {
+  const AnnouncenmentTabbarPage({Key? key}) : super(key: key);
 
   @override
-  _NotificationPageState createState() => _NotificationPageState();
+  _AnnouncenmentTabbarPageState createState() =>
+      _AnnouncenmentTabbarPageState();
 }
 
-class _NotificationPageState extends State<NotificationPage> {
+class _AnnouncenmentTabbarPageState extends State<AnnouncenmentTabbarPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
