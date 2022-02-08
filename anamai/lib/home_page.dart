@@ -1,4 +1,4 @@
-import 'package:anamai/complaint_status_page_copy.dart';
+import 'package:anamai/complaint_status_page.dart';
 import 'package:anamai/mycard_page.dart';
 import 'package:anamai/register_card_page.dart';
 import 'pages/announcenment/announ_page.dart';
@@ -6,7 +6,6 @@ import 'complaint_page.dart';
 import 'health_point_page.dart';
 import 'pages/notifications/noti_page.dart';
 import 'profile_page.dart';
-import 'complaint_status_page.dart';
 import 'package:flutter/material.dart';
 import 'login_page.dart';
 
@@ -188,7 +187,8 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const RequestPage2()),
+                  MaterialPageRoute(
+                      builder: (context) => const ComplaintStatusPage()),
                 );
               },
             ),
