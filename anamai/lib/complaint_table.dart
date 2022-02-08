@@ -1,19 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
-  }
-}
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -32,12 +19,9 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Column(
         children: [
-          const SizedBox(
-            height: 10,
-          ),
           PaginatedDataTable(
             source: _data,
-            header: const Text('สถานะการแจ้งร้องเรียน'),
+            // header: const Text('สถานะการแจ้งร้องเรียน'),
             columns: const [
               DataColumn(
                   label: Text('ลำดับ',
@@ -59,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: TextStyle(fontWeight: FontWeight.bold))),
             ],
             columnSpacing: 100,
-            horizontalMargin: 10,
+            horizontalMargin: 20,
             rowsPerPage: 9,
             showCheckboxColumn: false,
           ),
@@ -75,10 +59,10 @@ class MyData extends DataTableSource {
       10,
       (index) => {
             "id": index,
-            "title": "Item $index",
-            "price": index,
-            "name": index,
-            "date": index,
+            "topic": "หัวข้อ $index",
+            "title": index,
+            "date": "วันที่ 8 กุมภาพันธ์ 2565",
+            "status": "ขอเอกสารเพิ่มเติม",
             "attach": index,
           });
 
@@ -92,10 +76,14 @@ class MyData extends DataTableSource {
   DataRow getRow(int index) {
     return DataRow(cells: [
       DataCell(Text(_data[index]['id'].toString())),
-      DataCell(Text(_data[index]["title"])),
-      DataCell(Text(_data[index]["price"].toString())),
-      DataCell(Text(_data[index]["name"].toString())),
+      DataCell(Text(_data[index]["topic"])),
+      DataCell(Text(_data[index]["title"].toString())),
       DataCell(Text(_data[index]["date"].toString())),
+      DataCell(Text(
+        _data[index]["status"].toString(),
+        style: TextStyle(
+            color: Colors.deepPurple[300], fontWeight: FontWeight.bold),
+      )),
       DataCell(IconButton(
         icon: Icon(Icons.attach_file),
         onPressed: () {},
