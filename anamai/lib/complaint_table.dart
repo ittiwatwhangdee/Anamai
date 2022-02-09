@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
             columnSpacing: 100,
             horizontalMargin: 20,
-            rowsPerPage: 9,
+            rowsPerPage: 10,
             showCheckboxColumn: false,
           ),
         ],
@@ -56,11 +56,11 @@ class _HomeScreenState extends State<HomeScreen> {
 // The "soruce" of the table
 class MyData extends DataTableSource {
   final List<Map<String, dynamic>> _data = List.generate(
-      10,
+      20,
       (index) => {
-            "id": index,
-            "topic": "หัวข้อ $index",
-            "title": index,
+            "id": index + 1,
+            "topic": "หัวข้อการร้องเรียน",
+            "title": "เรื่องร้องเรียน",
             "date": "วันที่ 8 กุมภาพันธ์ 2565",
             "status": "ขอเอกสารเพิ่มเติม",
             "attach": index,
