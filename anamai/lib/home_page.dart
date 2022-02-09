@@ -182,7 +182,7 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               leading: Icon(Icons.textsms_outlined),
               title: const Text(
-                'สถานะการแจ้งร้องเรียน',
+                'สถานะการร้องเรียน',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               trailing: Icon(Icons.arrow_right),
