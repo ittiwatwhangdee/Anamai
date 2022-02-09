@@ -50,7 +50,7 @@ class MyStatelessWidget extends StatelessWidget {
       body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListView.builder(
-            itemCount: 2,
+            itemCount: 3,
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -64,9 +64,9 @@ class MyStatelessWidget extends StatelessWidget {
                           backgroundImage:
                               AssetImage("assets/images/LogoAnamai.png"),
                         ),
-                        title: const Text('หัวข้อการร้องเรียน'),
+                        title: Text('หัวข้อการร้องเรียน'),
                         subtitle: Text(
-                          'วันที่แจ้งร้องเรียน',
+                          'วันที่ 9 กุมภาพันธ์ 2565',
                           style:
                               TextStyle(color: Colors.black.withOpacity(0.6)),
                         ),
@@ -74,7 +74,7 @@ class MyStatelessWidget extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
-                          'เรื่องการร้องเรียน',
+                          'เรื่องร้องเรียน',
                           style:
                               TextStyle(color: Colors.black.withOpacity(0.6)),
                         ),
@@ -82,15 +82,15 @@ class MyStatelessWidget extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.only(top: 10),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             FlatButton(
                               onPressed: () {
                                 // Perform some action
                               },
                               child: const Text(
-                                'สถานะ : ขอเอกสารเพิ่มเติม',
-                                style: TextStyle(color: Colors.purple),
+                                'สถานะ : ดำเนินการเรียบร้อยแล้ว',
+                                style: TextStyle(color: Colors.green),
                               ),
                             ),
                             IconButton(
