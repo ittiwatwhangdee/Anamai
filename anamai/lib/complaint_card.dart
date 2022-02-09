@@ -40,10 +40,6 @@ class _ComplaintCardPageState extends State<ComplaintCardPage> {
 class MyStatelessWidget extends StatelessWidget {
   const MyStatelessWidget({Key? key}) : super(key: key);
 
-  final String title =
-      'บัตรพนักงานเจ้าหน้าที่ตาม พ.ร.บควบคุมการส่งเสริมการตลาดอาหารสำหรับทารกและเด็ก';
-  final String date = '2 กุมภาพันธ์ พ.ศ.2565';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,7 +62,7 @@ class MyStatelessWidget extends StatelessWidget {
                         ),
                         title: Text('หัวข้อการร้องเรียน'),
                         subtitle: Text(
-                          'วันที่ 9 กุมภาพันธ์ 2565',
+                          'วันที่ร้องเรียน',
                           style:
                               TextStyle(color: Colors.black.withOpacity(0.6)),
                         ),
@@ -82,7 +78,7 @@ class MyStatelessWidget extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.only(top: 10),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             FlatButton(
                               onPressed: () {
@@ -93,74 +89,85 @@ class MyStatelessWidget extends StatelessWidget {
                                 style: TextStyle(color: Colors.green),
                               ),
                             ),
-                            IconButton(
-                              icon: Icon(Icons.attach_file),
-                              onPressed: () {
-                                showModalBottomSheet(
-                                    enableDrag: true,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.vertical(
-                                        top: Radius.circular(20),
+                            Container(
+                              color: Colors.blue,
+                              child: IconButton(
+                                icon: Icon(Icons.attach_file),
+                                color: Colors.white,
+                                constraints: BoxConstraints(
+                                    maxHeight: 100, maxWidth: 100),
+                                enableFeedback: true,
+                                hoverColor: Colors.red,
+                                onPressed: () {
+                                  showModalBottomSheet(
+                                      enableDrag: true,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.vertical(
+                                          top: Radius.circular(20),
+                                        ),
                                       ),
-                                    ),
-                                    backgroundColor: Colors.transparent,
-                                    barrierColor: Colors.black38,
-                                    context: context,
-                                    builder: (context) => Container(
-                                          height: 250,
-                                          child: Container(
-                                              decoration: BoxDecoration(
-                                                  color: Colors.white,
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                          topLeft: const Radius
-                                                              .circular(18.0),
-                                                          topRight: const Radius
-                                                              .circular(18.0))),
-                                              child: Center(
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Text(
-                                                      'แนบไฟล์ของคุณ',
-                                                      style: TextStyle(
-                                                          fontSize: 16),
-                                                    ),
-                                                    Text(
-                                                      '* ขนาดไฟล์ไม่เกิน 2GB',
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color: Colors.grey),
-                                                    ),
-                                                    SizedBox(
-                                                      height: 7,
-                                                    ),
-                                                    RaisedButton(
-                                                      onPressed: () {
-                                                        print('Select Upload');
-                                                      },
-                                                      color: Colors.blueAccent,
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          10.0)),
-                                                      child: Text('อัพโหลด',
-                                                          style: TextStyle(
-                                                              fontSize: 15,
-                                                              color:
-                                                                  Colors.white,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold)),
-                                                    )
-                                                  ],
-                                                ),
-                                              )),
-                                        ));
-                              },
+                                      backgroundColor: Colors.transparent,
+                                      barrierColor: Colors.black38,
+                                      context: context,
+                                      builder: (context) => Container(
+                                            height: 250,
+                                            child: Container(
+                                                decoration: BoxDecoration(
+                                                    color: Colors.white,
+                                                    borderRadius:
+                                                        BorderRadius.only(
+                                                            topLeft: const Radius
+                                                                .circular(18.0),
+                                                            topRight: const Radius
+                                                                    .circular(
+                                                                18.0))),
+                                                child: Center(
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Text(
+                                                        'แนบไฟล์ของคุณ',
+                                                        style: TextStyle(
+                                                            fontSize: 16),
+                                                      ),
+                                                      Text(
+                                                        '* ขนาดไฟล์ไม่เกิน 2GB',
+                                                        style: TextStyle(
+                                                            fontSize: 14,
+                                                            color: Colors.grey),
+                                                      ),
+                                                      SizedBox(
+                                                        height: 7,
+                                                      ),
+                                                      RaisedButton(
+                                                        onPressed: () {
+                                                          print(
+                                                              'Select Upload');
+                                                        },
+                                                        color:
+                                                            Colors.blueAccent,
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10.0)),
+                                                        child: Text('อัพโหลด',
+                                                            style: TextStyle(
+                                                                fontSize: 15,
+                                                                color: Colors
+                                                                    .white,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold)),
+                                                      )
+                                                    ],
+                                                  ),
+                                                )),
+                                          ));
+                                },
+                              ),
                             ),
                           ],
                         ),
