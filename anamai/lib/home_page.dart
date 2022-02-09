@@ -1,6 +1,7 @@
 import 'package:anamai/complaint_status_page.dart';
 import 'package:anamai/mycard_page.dart';
 import 'package:anamai/register_card_page.dart';
+import 'complaint_card.dart';
 import 'complaint_table.dart';
 import 'pages/announcenment/announ_page.dart';
 import 'complaint_page.dart';
@@ -188,7 +189,8 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => const ComplaintCardPage()),
                 );
               },
             ),
