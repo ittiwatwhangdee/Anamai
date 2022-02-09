@@ -85,8 +85,8 @@ class MyStatelessWidget extends StatelessWidget {
                                 // Perform some action
                               },
                               child: const Text(
-                                'สถานะ : ดำเนินการเรียบร้อยแล้ว',
-                                style: TextStyle(color: Colors.green),
+                                'สถานะ : ขอเอกสารเพิ่มเติม',
+                                style: TextStyle(color: Colors.purple),
                               ),
                             ),
                             Container(
