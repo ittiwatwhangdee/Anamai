@@ -165,7 +165,7 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.checklist_outlined),
+              leading: Icon(Icons.forward_to_inbox_outlined),
               title: const Text(
                 'แจ้งร้องเรียน',
                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -180,7 +180,7 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.textsms_outlined),
+              leading: Icon(Icons.checklist_outlined),
               title: const Text(
                 'สถานะการร้องเรียน',
                 style: TextStyle(fontWeight: FontWeight.bold),
