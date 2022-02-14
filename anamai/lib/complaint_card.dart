@@ -90,14 +90,21 @@ class MyStatelessWidget extends StatelessWidget {
                               ),
                             ),
                             Container(
-                              color: Colors.blue,
-                              child: IconButton(
-                                icon: Icon(Icons.attach_file),
-                                color: Colors.white,
-                                constraints: BoxConstraints(
-                                    maxHeight: 100, maxWidth: 100),
-                                enableFeedback: true,
-                                hoverColor: Colors.red,
+                              child: RaisedButton.icon(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(10.0))),
+                                label: Text(
+                                  'แนบไฟล์',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                icon: Icon(
+                                  Icons.attach_file,
+                                  color: Colors.white,
+                                ),
+                                textColor: Colors.white,
+                                splashColor: Colors.blue,
+                                color: Colors.lightBlue,
                                 onPressed: () {
                                   showModalBottomSheet(
                                       enableDrag: true,
@@ -141,27 +148,28 @@ class MyStatelessWidget extends StatelessWidget {
                                                       SizedBox(
                                                         height: 7,
                                                       ),
-                                                      RaisedButton(
-                                                        onPressed: () {
-                                                          print(
-                                                              'Select Upload');
-                                                        },
-                                                        color:
-                                                            Colors.blueAccent,
+                                                      RaisedButton.icon(
+                                                        onPressed: () {},
                                                         shape: RoundedRectangleBorder(
                                                             borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        10.0)),
-                                                        child: Text('อัพโหลด',
-                                                            style: TextStyle(
-                                                                fontSize: 15,
-                                                                color: Colors
-                                                                    .white,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold)),
-                                                      )
+                                                                BorderRadius.all(
+                                                                    Radius.circular(
+                                                                        10.0))),
+                                                        label: Text(
+                                                          'อัพโหลด',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        icon: Icon(
+                                                          Icons.backup,
+                                                          color: Colors.white,
+                                                        ),
+                                                        textColor: Colors.white,
+                                                        splashColor:
+                                                            Colors.blue,
+                                                        color: Colors.lightBlue,
+                                                      ),
                                                     ],
                                                   ),
                                                 )),
