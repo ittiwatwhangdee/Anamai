@@ -48,31 +48,44 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        backgroundColor: Color(0xFF1565C0),
-        title: Container(
-          child: Align(
-            alignment: Alignment.center,
-            child: Image.asset(
-              'assets/images/LogoAnamai.png',
-              height: 40,
-            ),
-          ),
+        iconTheme: IconThemeData(color: Colors.black),
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        title: Image.asset(
+          'assets/images/LogoAnamai.png',
+          height: 50,
+          fit: BoxFit.cover,
         ),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(
-              Icons.notifications_none_outlined,
-              color: Colors.white,
-            ),
-            tooltip: 'การแจ้งเตือน',
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const NotificationPage()),
-              );
-            },
+        actions: [
+          Stack(
+            children: <Widget>[
+              IconButton(
+                  icon: Icon(Icons.notifications_none_outlined),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const NotificationPage()),
+                    );
+                  }),
+              Positioned(
+                right: 11,
+                top: 11,
+                child: Container(
+                  padding: EdgeInsets.all(2),
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  constraints: BoxConstraints(
+                    minWidth: 12,
+                    minHeight: 12,
+                  ),
+                ),
+              )
+            ],
           ),
         ],
       ),
