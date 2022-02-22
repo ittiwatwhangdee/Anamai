@@ -55,12 +55,12 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         title: Image.asset(
           'assets/images/LogoAnamai.png',
-          height: 50,
+          height: 45,
           fit: BoxFit.cover,
         ),
         actions: [
           Stack(
-            children: <Widget>[
+            children: [
               IconButton(
                   icon: Icon(Icons.notifications_none_outlined),
                   onPressed: () {
