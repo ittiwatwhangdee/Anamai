@@ -121,19 +121,20 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
-                leading: Icon(Icons.ballot_outlined),
-                title: const Text(
-                  'ข่าวประชาสัมพันธ์',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                trailing: Icon(Icons.arrow_right),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AnnouncenmentPage()),
-                  );
-                }),
+              leading: Icon(Icons.ballot_outlined),
+              title: const Text(
+                'ข่าวประชาสัมพันธ์',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              trailing: Icon(Icons.arrow_right),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AnnouncenmentPage()),
+                );
+              },
+            ),
             ListTile(
               leading: Icon(Icons.badge),
               title: const Text(
