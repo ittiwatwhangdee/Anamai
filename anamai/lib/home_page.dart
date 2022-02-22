@@ -96,16 +96,20 @@ class _HomePageState extends State<HomePage> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+            UserAccountsDrawerHeader(
               decoration: BoxDecoration(
                 color: Color(0xFF1565C0),
               ),
-              child: Text(
-                'admin@gmail.com',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
+              accountName: Text("Ittiwat Whangdee"),
+              accountEmail: Text("s6130613045@phuket.psu.ac.th"),
+              currentAccountPicture: CircleAvatar(
+                backgroundColor:
+                    Theme.of(context).platform == TargetPlatform.iOS
+                        ? Colors.blue
+                        : Colors.white,
+                child: Text(
+                  "I",
+                  style: TextStyle(fontSize: 40.0),
                 ),
               ),
             ),
