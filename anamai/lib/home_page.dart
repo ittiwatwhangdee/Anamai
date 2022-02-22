@@ -108,7 +108,7 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
-                leading: Icon(Icons.announcement_outlined),
+                leading: Icon(Icons.ballot_outlined),
                 title: const Text(
                   'ข่าวประชาสัมพันธ์',
                   style: TextStyle(fontWeight: FontWeight.bold),
@@ -122,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 }),
             ListTile(
-              leading: Icon(Icons.all_inbox),
+              leading: Icon(Icons.badge),
               title: const Text(
                 'บัตรของฉัน',
                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -136,7 +136,7 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.all_inbox),
+              leading: Icon(Icons.assignment),
               title: const Text(
                 'ลงทะเบียนขอบัตร',
                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -165,7 +165,7 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.forward_to_inbox_outlined),
+              leading: Icon(Icons.assignment_ind),
               title: const Text(
                 'แจ้งร้องเรียน',
                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -180,7 +180,7 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.checklist_outlined),
+              leading: Icon(Icons.format_list_bulleted),
               title: const Text(
                 'สถานะการร้องเรียน',
                 style: TextStyle(fontWeight: FontWeight.bold),
