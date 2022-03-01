@@ -44,16 +44,29 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(8.0),
       child: ListView(children: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(8.0),
           child: Card(
+            elevation: 4,
+            clipBehavior: Clip.antiAlias,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             child: Column(
               children: [
-                Image.asset('assets/images/register_card_1.png'),
+                Stack(alignment: Alignment.center, children: [
+                  Ink.image(
+                    image: AssetImage('assets/images/register_card_1.png'),
+                    fit: BoxFit.fill,
+                    height: 200,
+                    child: InkWell(
+                      onTap: () {},
+                    ),
+                  ),
+                ]),
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: EdgeInsets.all(16.0),
                   child: Text(
                     'เจ้าพนักงานท้องถิ่น / เจ้าพนักงานสารธารณสุข / ซึ่งผู้ได้รับการแต่งตั้งจากเจ้าภาพพนักงานท้องถิ่น',
                     style: TextStyle(color: Colors.black.withOpacity(0.6)),
@@ -83,11 +96,22 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Card(
+            elevation: 4,
+            clipBehavior: Clip.antiAlias,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             child: Column(
               children: [
-                Image.asset(
-                  'assets/images/register_card_2.png',
-                ),
+                Stack(alignment: Alignment.center, children: [
+                  Ink.image(
+                    image: AssetImage('assets/images/register_card_2.png'),
+                    fit: BoxFit.fill,
+                    height: 200,
+                    child: InkWell(
+                      onTap: () {},
+                    ),
+                  ),
+                ]),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
@@ -120,11 +144,22 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Card(
+            elevation: 4,
+            clipBehavior: Clip.antiAlias,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             child: Column(
               children: [
-                Image.asset(
-                  'assets/images/Card2.png',
-                ),
+                Stack(alignment: Alignment.center, children: [
+                  Ink.image(
+                    image: AssetImage('assets/images/Card2.png'),
+                    fit: BoxFit.fill,
+                    height: 200,
+                    child: InkWell(
+                      onTap: () {},
+                    ),
+                  ),
+                ]),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(

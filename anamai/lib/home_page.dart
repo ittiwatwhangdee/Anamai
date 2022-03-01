@@ -1,8 +1,6 @@
-import 'package:anamai/complaint_status_page.dart';
 import 'package:anamai/mycard_page.dart';
 import 'package:anamai/register_card_page.dart';
-import 'complaint_card.dart';
-import 'complaint_table.dart';
+import 'complaint_status_card.dart';
 import 'pages/announcenment/announ_page.dart';
 import 'complaint_page.dart';
 import 'health_point_page.dart';
