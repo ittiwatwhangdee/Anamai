@@ -501,6 +501,30 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
                     ),
                   ),
 
+                  //หลักสูตรที่ผ่านการอบกรม
+                  DropdownSearch<String>(
+                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                    dropdownSearchDecoration: InputDecoration(
+                      hintText: "หลักสูตรที่ผ่านการอบกรม",
+                      labelText: "หลักสูตรที่ผ่านการอบกรม",
+                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                      border: OutlineInputBorder(),
+                    ),
+                    mode: Mode.MENU,
+                    showSelectedItems: true,
+                    items: [
+                      "ผู้ประกอบการ",
+                      "ผู้สัมผัสอาหาร",
+                    ],
+                    showClearButton: true,
+                    onChanged: print,
+                    popupItemDisabled: (String? s) =>
+                        s?.startsWith('I') ?? false,
+                    clearButtonSplashRadius: 20,
+                    selectedItem: "หลักสูตรที่ผ่านการอบกรม",
+                  ),
+                  Divider(),
+
                   //องค์กรปกครองส่วนท้องถิ่น ณ พื้นที่ตั้งร้านอาหาร
                   DropdownSearch<String>(
                     validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
