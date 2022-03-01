@@ -21,7 +21,12 @@ class _ComplaintPageState extends State<ComplaintPage> {
           },
           icon: Icon(Icons.arrow_back_ios_new_outlined),
         ),
-        title: const Text(ComplaintPage._title),
+        title: const Text(
+          ComplaintPage._title,
+          style: TextStyle(
+            fontSize: 18,
+          ),
+        ),
         backgroundColor: Colors.blue[800],
       ),
       body: MyStatelessWidget(),
