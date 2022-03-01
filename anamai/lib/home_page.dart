@@ -1,5 +1,5 @@
 import 'package:anamai/mycard_page.dart';
-import 'package:anamai/register_card_page.dart';
+import 'package:anamai/pages/register_card/register_card_page.dart';
 import 'complaint_status_card.dart';
 import 'pages/announcenment/announ_page.dart';
 import 'complaint_page.dart';

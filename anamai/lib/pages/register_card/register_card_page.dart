@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'register_business_page.dart';
 
 class RegisterCardPage extends StatefulWidget {
   const RegisterCardPage({Key? key}) : super(key: key);
-  static const String _title = 'ลงทะเบียนขอบัตรประจำตัว';
+  static const String _title = 'ลงทะเบียนขอบัตร';
 
   @override
   _RegisterCardPageState createState() => _RegisterCardPageState();
@@ -68,7 +69,7 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
                 Padding(
                   padding: EdgeInsets.all(16.0),
                   child: Text(
-                    'เจ้าพนักงานท้องถิ่น / เจ้าพนักงานสารธารณสุข / ซึ่งผู้ได้รับการแต่งตั้งจากเจ้าภาพพนักงานท้องถิ่น',
+                    'บัตรประจำตัวผู้ประกอบกิจการและผู้สัมผัสอาหาร',
                     style: TextStyle(color: Colors.black.withOpacity(0.6)),
                   ),
                 ),
@@ -86,7 +87,13 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
                         color: Colors.white,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RegisterBusinessPage()),
+                      );
+                    },
                   )),
                 )
               ],

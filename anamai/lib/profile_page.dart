@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:dropdown_search/dropdown_search.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
