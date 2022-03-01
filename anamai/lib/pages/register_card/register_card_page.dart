@@ -58,7 +58,7 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
               children: [
                 Stack(alignment: Alignment.center, children: [
                   Ink.image(
-                    image: AssetImage('assets/images/register_card_1.png'),
+                    image: AssetImage('assets/images/icon_card_business.png'),
                     fit: BoxFit.fill,
                     height: 200,
                     child: InkWell(
@@ -111,7 +111,7 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
               children: [
                 Stack(alignment: Alignment.center, children: [
                   Ink.image(
-                    image: AssetImage('assets/images/register_card_2.png'),
+                    image: AssetImage('assets/images/icon_card_elder.png'),
                     fit: BoxFit.fill,
                     height: 200,
                     child: InkWell(
@@ -159,7 +159,7 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
               children: [
                 Stack(alignment: Alignment.center, children: [
                   Ink.image(
-                    image: AssetImage('assets/images/Card2.png'),
+                    image: AssetImage('assets/images/icon_card_etc.png'),
                     fit: BoxFit.fill,
                     height: 200,
                     child: InkWell(
