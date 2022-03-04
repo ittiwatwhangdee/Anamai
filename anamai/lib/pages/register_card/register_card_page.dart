@@ -103,6 +103,51 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
               children: [
                 Stack(alignment: Alignment.center, children: [
                   Ink.image(
+                    image: AssetImage('assets/images/icon_card_local.png'),
+                    fit: BoxFit.fill,
+                    height: 200,
+                    child: InkWell(
+                      onTap: () {},
+                    ),
+                  ),
+                ]),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    'บัตรเจ้าพนักงานท้องถิ่น / เจ้าพนักงานสาธารณสุข',
+                    style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                  ),
+                ),
+                ButtonBar(
+                  alignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                      child: Text('ลงทะเบียน'),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RegisterBusinessPage()),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Card(
+            elevation: 4,
+            clipBehavior: Clip.antiAlias,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            child: Column(
+              children: [
+                Stack(alignment: Alignment.center, children: [
+                  Ink.image(
                     image: AssetImage('assets/images/icon_card_elder.png'),
                     fit: BoxFit.fill,
                     height: 200,
@@ -114,7 +159,7 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    'บัตรประจำตัวผู้ดูแลผู้สูงอายุ (Caregiver) และบัตรประจำตัวผู้จัดการดูแลผู้สูงอายุ (Care Manager)',
+                    'บัตรประจำตัวผู้ดูแลผู้สูงอายุ (Caregiver)',
                     style: TextStyle(color: Colors.black.withOpacity(0.6)),
                   ),
                 ),
@@ -159,7 +204,7 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    'แบบฟอร์ม',
+                    'บัตรอื่นๆ กรมอนามัย',
                     style: TextStyle(color: Colors.black.withOpacity(0.6)),
                   ),
                 ),
