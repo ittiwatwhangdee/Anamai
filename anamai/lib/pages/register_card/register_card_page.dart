@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'register_business_page.dart';
+import 'register_elder_page.dart';
 
 class RegisterCardPage extends StatefulWidget {
   const RegisterCardPage({Key? key}) : super(key: key);
@@ -172,7 +173,7 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => RegisterBusinessPage()),
+                              builder: (context) => RegisterElderPage()),
                         );
                       },
                     ),
