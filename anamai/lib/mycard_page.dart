@@ -47,15 +47,27 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
       padding: const EdgeInsets.all(8.0),
       child: ListView(children: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(8.0),
           child: Card(
+            clipBehavior: Clip.antiAlias,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: Column(
               children: [
-                Image.asset('assets/images/Card1.png'),
+                Stack(alignment: Alignment.center, children: [
+                  Ink.image(
+                    image: AssetImage('assets/images/icon_card_business.png'),
+                    fit: BoxFit.fill,
+                    height: 200,
+                    child: InkWell(
+                      onTap: () {},
+                    ),
+                  ),
+                ]),
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: EdgeInsets.all(16.0),
                   child: Text(
-                    'บัตรพนักงานเจ้าหน้าที่ตาม พ.ร.บ ควบคุมการส่งเสริมการตลาดอาหารสำหรับทารกและเด็กเล็ก',
+                    'บัตรประจำตัวผู้ประกอบกิจการและผู้สัมผัสอาหาร',
                     style: TextStyle(color: Colors.black.withOpacity(0.6)),
                   ),
                 ),
@@ -63,8 +75,8 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
                   alignment: MainAxisAlignment.center,
                   children: [
                     TextButton(
+                      child: Text('ดูข้อมูลบัตร'),
                       onPressed: () {},
-                      child: const Text('ดูข้อมูลบัตร'),
                     ),
                   ],
                 ),
@@ -75,15 +87,25 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Card(
+            clipBehavior: Clip.antiAlias,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: Column(
               children: [
-                Image.asset(
-                  'assets/images/Card2.png',
-                ),
+                Stack(alignment: Alignment.center, children: [
+                  Ink.image(
+                    image: AssetImage('assets/images/icon_card_local.png'),
+                    fit: BoxFit.fill,
+                    height: 200,
+                    child: InkWell(
+                      onTap: () {},
+                    ),
+                  ),
+                ]),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    'บัตรส่งเสริมสุขภาพ',
+                    'บัตรเจ้าพนักงานท้องถิ่น / เจ้าพนักงานสาธารณสุข',
                     style: TextStyle(color: Colors.black.withOpacity(0.6)),
                   ),
                 ),
@@ -91,12 +113,11 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
                   alignment: MainAxisAlignment.center,
                   children: [
                     TextButton(
+                      child: Text('ดูข้อมูลบัตร'),
                       onPressed: () {},
-                      child: const Text('ดูข้อมูลบัตร'),
                     ),
                   ],
                 ),
-                // Image.asset('assets/images/Announ1.png'),
               ],
             ),
           ),
@@ -104,15 +125,25 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Card(
+            clipBehavior: Clip.antiAlias,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: Column(
               children: [
-                Image.asset(
-                  'assets/images/Card2.png',
-                ),
+                Stack(alignment: Alignment.center, children: [
+                  Ink.image(
+                    image: AssetImage('assets/images/icon_card_acd.png'),
+                    fit: BoxFit.fill,
+                    height: 200,
+                    child: InkWell(
+                      onTap: () {},
+                    ),
+                  ),
+                ]),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    'บัตรกรมอนามัย',
+                    'บัตรประจำตัวผู้ดูแลผู้สูงอายุ (Caregiver)',
                     style: TextStyle(color: Colors.black.withOpacity(0.6)),
                   ),
                 ),
@@ -120,12 +151,11 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
                   alignment: MainAxisAlignment.center,
                   children: [
                     TextButton(
+                      child: Text('ลงทะเบียน'),
                       onPressed: () {},
-                      child: const Text('ดูข้อมูลบัตร'),
                     ),
                   ],
                 ),
-                // Image.asset('assets/images/Announ1.png'),
               ],
             ),
           ),
