@@ -1,3 +1,4 @@
+import 'package:anamai/pages/register_card/edit_card_business_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 
@@ -52,9 +53,9 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
                       'บัตรประจำตัวผู้ประกอบกิจการและผู้สัมผัสอาหาร',
                       textAlign: TextAlign.start,
                       style: TextStyle(
-                          fontSize: 19,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   Divider(),
@@ -611,8 +612,35 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
                     onPressed: () {},
                   )),
 
-                  SizedBox(
-                    height: 20,
+                  Container(
+                    padding: EdgeInsets.fromLTRB(0, 0, 8, 20),
+                  ),
+
+                  GestureDetector(
+                      child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.grey[400],
+                        fixedSize: const Size(250, 43),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5))),
+                    child: const Text(
+                      'แก้ไขข้อมูล',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => EditCardBusinessPage()),
+                      );
+                    },
+                  )),
+
+                  Container(
+                    padding: EdgeInsets.fromLTRB(0, 0, 8, 20),
                   ),
 
                   GestureDetector(

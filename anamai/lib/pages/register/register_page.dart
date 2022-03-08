@@ -160,7 +160,7 @@ class MyStatelessWidget extends StatelessWidget {
                       "ผู้สัมผัสอาหาร",
                       "เจ้าหน้าที่รัฐ",
                       "ผู้ดูแลผู้สูงอายุ"
-                          "หน่วยงานอบรม",
+                      "หน่วยงานอบรม",
                     ],
                     showClearButton: true,
                     onChanged: print,

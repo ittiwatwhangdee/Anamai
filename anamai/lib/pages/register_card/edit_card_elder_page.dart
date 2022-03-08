@@ -1,13 +1,14 @@
-import 'package:anamai/pages/register_card/edit_card_elder_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 
-class RegisterElderPage extends StatefulWidget {
+class EditCardElderPage extends StatefulWidget {
+  const EditCardElderPage({Key? key}) : super(key: key);
+
   @override
-  State<RegisterElderPage> createState() => _RegisterElderPageState();
+  State<EditCardElderPage> createState() => _EditCardElderPageState();
 }
 
-class _RegisterElderPageState extends State<RegisterElderPage> {
+class _EditCardElderPageState extends State<EditCardElderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +20,7 @@ class _RegisterElderPageState extends State<RegisterElderPage> {
           icon: const Icon(Icons.arrow_back_ios_new_outlined),
         ),
         title: const Text(
-          "ลงทะเบียนขอบัตร",
+          "แก้ไขข้อมูล",
           style: TextStyle(
             fontSize: 18,
           ),
@@ -50,7 +51,7 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
                 child: ListView(padding: EdgeInsets.all(4), children: <Widget>[
                   Container(
                     child: Text(
-                      'บัตรประจำตัวผู้ดูแลผู้สูงอายุ',
+                      'แก้ไขข้อมูลบัตรประจำตัวผู้ดูแลผู้สูงอายุ',
                       textAlign: TextAlign.start,
                       style: TextStyle(
                         fontSize: 18,
@@ -525,33 +526,6 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
                           fontWeight: FontWeight.bold),
                     ),
                     onPressed: () {},
-                  )),
-
-                  Container(
-                    padding: EdgeInsets.fromLTRB(0, 0, 8, 20),
-                  ),
-
-                  GestureDetector(
-                      child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.grey[400],
-                        fixedSize: const Size(250, 43),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5))),
-                    child: const Text(
-                      'แก้ไขข้อมูล',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => EditCardElderPage()),
-                      );
-                    },
                   )),
 
                   Container(

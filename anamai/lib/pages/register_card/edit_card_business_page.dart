@@ -1,13 +1,14 @@
-import 'package:anamai/pages/register_card/edit_card_elder_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 
-class RegisterElderPage extends StatefulWidget {
+class EditCardBusinessPage extends StatefulWidget {
+  const EditCardBusinessPage({Key? key}) : super(key: key);
+
   @override
-  State<RegisterElderPage> createState() => _RegisterElderPageState();
+  State<EditCardBusinessPage> createState() => _EditCardBusinessPageState();
 }
 
-class _RegisterElderPageState extends State<RegisterElderPage> {
+class _EditCardBusinessPageState extends State<EditCardBusinessPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +20,7 @@ class _RegisterElderPageState extends State<RegisterElderPage> {
           icon: const Icon(Icons.arrow_back_ios_new_outlined),
         ),
         title: const Text(
-          "ลงทะเบียนขอบัตร",
+          "แก้ไขข้อมูล",
           style: TextStyle(
             fontSize: 18,
           ),
@@ -50,7 +51,7 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
                 child: ListView(padding: EdgeInsets.all(4), children: <Widget>[
                   Container(
                     child: Text(
-                      'บัตรประจำตัวผู้ดูแลผู้สูงอายุ',
+                      'แก้ไขข้อมูลบัตรประจำตัวผู้ประกอบกิจการและผู้สัมผัสอาหาร',
                       textAlign: TextAlign.start,
                       style: TextStyle(
                         fontSize: 18,
@@ -335,69 +336,8 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
 
                   Container(
                     padding: EdgeInsets.fromLTRB(0, 12, 8, 20),
-                  ),
-
-                  ///วุฒิการศึกษา
-                  DropdownSearch<String>(
-                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
-                    dropdownSearchDecoration: InputDecoration(
-                      hintText: "กรุณาเลือกวุฒิการศึกษา",
-                      labelText: "วุฒิการศึกษา*",
-                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
-                      border: OutlineInputBorder(),
-                    ),
-                    mode: Mode.MENU,
-                    showSelectedItems: true,
-                    items: [
-                      "ปริญญาตรี",
-                      "ปริญญาโท",
-                      "ปริญญาเอก",
-                    ],
-                    showClearButton: true,
-                    onChanged: print,
-                    popupItemDisabled: (String? s) =>
-                        s?.startsWith('I') ?? false,
-                    clearButtonSplashRadius: 20,
-                    selectedItem: "กรุณาเลือกวุฒิการศึกษา",
-                  ),
-                  Divider(),
-
-                  //สาขา
-                  TextField(
-                      decoration: InputDecoration(
-                    hintText: 'สาขา',
-                    border: OutlineInputBorder(),
-                  )),
-                  Divider(),
-
-                  //ประวัติการทำงาน(อายุงาน)
-                  TextField(
-                      decoration: InputDecoration(
-                    hintText: 'ประวัติการทำงาน(อายุงาน)',
-                    border: OutlineInputBorder(),
-                  )),
-                  Divider(),
-
-                  //วันที่เริ่มการทำงาน(วัน/เดือน/ปี)
-                  TextField(
-                      decoration: InputDecoration(
-                    hintText: 'วันที่เริ่มการทำงาน(วัน/เดือน/ปี)',
-                    border: OutlineInputBorder(),
-                  )),
-                  Divider(),
-
-                  //วันที่สิ้นสุดการทำงาน(วัน/เดือน/ปี)
-                  TextField(
-                      decoration: InputDecoration(
-                    hintText: 'วันที่สิ้นสุดการทำงาน(วัน/เดือน/ปี)',
-                    border: OutlineInputBorder(),
-                  )),
-                  Divider(),
-
-                  Container(
-                    padding: EdgeInsets.fromLTRB(0, 12, 8, 20),
                     child: Text(
-                      'ข้อมูลหน่วยงาน',
+                      'สถานที่จำหน่ายอาหาร',
                       style: TextStyle(
                           fontSize: 18,
                           color: Colors.blue,
@@ -405,73 +345,219 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
                     ),
                   ),
 
-                  //เลือกประเภทผู้ใช้งาน
+                  //บ้านเลขที่
+                  TextField(
+                      decoration: InputDecoration(
+                    hintText: 'บ้านเลขที่',
+                    border: OutlineInputBorder(),
+                  )),
+                  Divider(),
+
+                  //หมู่
+                  TextField(
+                      decoration: InputDecoration(
+                    hintText: 'หมู่',
+                    border: OutlineInputBorder(),
+                  )),
+                  Divider(),
+
+                  //ถนน
+                  TextField(
+                      decoration: InputDecoration(
+                    hintText: 'ถนน',
+                    border: OutlineInputBorder(),
+                  )),
+                  Divider(),
+
+                  ///จังหวัด
                   DropdownSearch<String>(
                     validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
                     dropdownSearchDecoration: InputDecoration(
-                      hintText: "กรุณาเลือก",
-                      labelText: "เลือกประเภทผู้ใช้งาน*",
+                      hintText: "กรุณาเลือกจังหวัด",
+                      labelText: "จังหวัด*",
                       contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
                       border: OutlineInputBorder(),
                     ),
                     mode: Mode.MENU,
                     showSelectedItems: true,
                     items: [
-                      "ประชาชน",
-                      "ผู้ประกอบกิจการ",
+                      "เชียงใหม่",
+                      "เชียงราย",
+                      "เพชรบุรี",
+                      "เพชรบูรณ์",
+                    ],
+                    showClearButton: true,
+                    onChanged: print,
+                    popupItemDisabled: (String? s) =>
+                        s?.startsWith('I') ?? false,
+                    clearButtonSplashRadius: 20,
+                    selectedItem: "กรุณาเลือกจังหวัด",
+                  ),
+                  Divider(),
+
+                  //อำเภอ/เขต
+                  DropdownSearch<String>(
+                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                    dropdownSearchDecoration: InputDecoration(
+                      hintText: "กรุณาเลือกอำเภอ/เขต",
+                      labelText: "อำเภอ/เขต*",
+                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                      border: OutlineInputBorder(),
+                    ),
+                    mode: Mode.MENU,
+                    showSelectedItems: true,
+                    items: [
+                      "-",
+                      "-",
+                      "-",
+                      "-",
+                    ],
+                    showClearButton: true,
+                    onChanged: print,
+                    popupItemDisabled: (String? s) =>
+                        s?.startsWith('I') ?? false,
+                    clearButtonSplashRadius: 20,
+                    selectedItem: "กรุณาเลือกอำเภอ/เขต",
+                  ),
+                  Divider(),
+
+                  //ตำบล/แขวง
+                  DropdownSearch<String>(
+                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                    dropdownSearchDecoration: InputDecoration(
+                      hintText: "กรุณาเลือกตำบล/แขวง",
+                      labelText: "ตำบล/แขวง*",
+                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                      border: OutlineInputBorder(),
+                    ),
+                    mode: Mode.MENU,
+                    showSelectedItems: true,
+                    items: [
+                      "-",
+                      "-",
+                      "-",
+                      "-",
+                    ],
+                    showClearButton: true,
+                    onChanged: print,
+                    popupItemDisabled: (String? s) =>
+                        s?.startsWith('I') ?? false,
+                    clearButtonSplashRadius: 20,
+                    selectedItem: "กรุณาเลือกตำบล/แขวง",
+                  ),
+                  Divider(),
+
+                  ///รหัสไปรษณีย์
+                  TextField(
+                      decoration: InputDecoration(
+                    hintText: 'รหัสไปรษณีย์',
+                    border: OutlineInputBorder(),
+                  )),
+                  Divider(),
+
+                  ///ชื่อร้านอาหาร
+                  TextField(
+                      decoration: InputDecoration(
+                    hintText: 'ชื่อร้านอาหาร',
+                    border: OutlineInputBorder(),
+                  )),
+                  Divider(),
+
+                  //องค์กรปกครองส่วนท้องถิ่น ณ พื้นที่ตั้งร้านอาหาร
+                  DropdownSearch<String>(
+                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                    dropdownSearchDecoration: InputDecoration(
+                      hintText:
+                          "กรุณาเลือกองค์กรปกครองส่วนท้องถิ่น ณ พื้นที่ตั้งร้านอาหาร",
+                      labelText:
+                          "องค์กรปกครองส่วนท้องถิ่น ณ พื้นที่ตั้งร้านอาหาร",
+                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                      border: OutlineInputBorder(),
+                    ),
+                    mode: Mode.MENU,
+                    showSelectedItems: true,
+                    items: [
+                      "-",
+                      "-",
+                      "-",
+                      "-",
+                    ],
+                    showClearButton: true,
+                    onChanged: print,
+                    popupItemDisabled: (String? s) =>
+                        s?.startsWith('I') ?? false,
+                    clearButtonSplashRadius: 20,
+                    selectedItem:
+                        "กรุณาเลือกองค์กรปกครองส่วนท้องถิ่น ณ พื้นที่ตั้งร้านอาหาร",
+                  ),
+                  Divider(),
+
+                  Container(
+                    padding: EdgeInsets.fromLTRB(0, 12, 8, 20),
+                    child: Text(
+                      'ข้อมูลการขอบัตร',
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+
+                  //หลักสูตรที่ผ่านการอบกรม
+                  DropdownSearch<String>(
+                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                    dropdownSearchDecoration: InputDecoration(
+                      hintText: "หลักสูตรที่ผ่านการอบกรม",
+                      labelText: "หลักสูตรที่ผ่านการอบกรม",
+                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                      border: OutlineInputBorder(),
+                    ),
+                    mode: Mode.MENU,
+                    showSelectedItems: true,
+                    items: [
+                      "ผู้ประกอบการ",
                       "ผู้สัมผัสอาหาร",
-                      "เจ้าหน้าที่รัฐ",
-                      "ผู้ดูแลผู้สูงอายุ"
-                          "หน่วยงานอบรม",
                     ],
                     showClearButton: true,
                     onChanged: print,
                     popupItemDisabled: (String? s) =>
                         s?.startsWith('I') ?? false,
                     clearButtonSplashRadius: 20,
-                    selectedItem: "กรุณาเลือก",
+                    selectedItem: "หลักสูตรที่ผ่านการอบกรม",
                   ),
                   Divider(),
 
-                  ///สังกัดหน่วยงาน
-                  TextField(
-                      decoration: InputDecoration(
-                    hintText: 'สังกัดหน่วยงาน',
-                    border: OutlineInputBorder(),
-                  )),
-                  Divider(),
-
-                  ///ตำแหน่ง
-                  TextField(
-                      decoration: InputDecoration(
-                    hintText: 'ตำแหน่ง',
-                    border: OutlineInputBorder(),
-                  )),
-                  Divider(),
-
-                  Container(
-                    padding: EdgeInsets.fromLTRB(0, 12, 8, 20),
-                    child: Text(
-                      'ข้อมูลอบรม',
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold),
+                  //องค์กรปกครองส่วนท้องถิ่น ณ พื้นที่ตั้งร้านอาหาร
+                  DropdownSearch<String>(
+                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                    dropdownSearchDecoration: InputDecoration(
+                      hintText: "ประเภท",
+                      labelText: "ประเภท",
+                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                      border: OutlineInputBorder(),
                     ),
+                    mode: Mode.MENU,
+                    showSelectedItems: true,
+                    items: [
+                      "กรมอนามัย",
+                      "ศูนย์อนามัย",
+                      "สำนักงานสาธารณสุขจังหวัด",
+                      "องค์การปกครองส่วนท้องถิ่น",
+                      "สถาบันฝึกอบรม",
+                    ],
+                    showClearButton: true,
+                    onChanged: print,
+                    popupItemDisabled: (String? s) =>
+                        s?.startsWith('I') ?? false,
+                    clearButtonSplashRadius: 20,
+                    selectedItem: "ประเภท",
                   ),
-
-                  ///ชื่อหน่วยงาน
-                  TextField(
-                      decoration: InputDecoration(
-                    hintText: 'ชื่อหน่วยงาน',
-                    border: OutlineInputBorder(),
-                  )),
                   Divider(),
 
-                  ///วันที่ผ่านการฝึกอบรม(วัน/เดือน/ปี)
+                  ///วันที่ผ่านการอบรม
                   TextField(
                       decoration: InputDecoration(
-                    hintText: 'วันที่ผ่านการฝึกอบรม(วัน/เดือน/ปี)',
+                    hintText: 'วันที่ผ่านการอบรม',
                     border: OutlineInputBorder(),
                   )),
                   Divider(),
@@ -527,35 +613,8 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
                     onPressed: () {},
                   )),
 
-                  Container(
-                    padding: EdgeInsets.fromLTRB(0, 0, 8, 20),
-                  ),
-
-                  GestureDetector(
-                      child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.grey[400],
-                        fixedSize: const Size(250, 43),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5))),
-                    child: const Text(
-                      'แก้ไขข้อมูล',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => EditCardElderPage()),
-                      );
-                    },
-                  )),
-
-                  Container(
-                    padding: EdgeInsets.fromLTRB(0, 0, 8, 20),
+                  SizedBox(
+                    height: 20,
                   ),
 
                   GestureDetector(
