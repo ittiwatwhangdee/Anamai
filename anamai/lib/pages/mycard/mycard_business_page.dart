@@ -55,7 +55,8 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
             child: Column(
               children: [
                 ListTile(
-                  title: Text('บัตรประจำตัวผู้ประกอบกิจการ'),
+                  title: Text('บัตรประจำตัวผู้ประกอบกิจการ',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
                 ),
                 Stack(alignment: Alignment.center, children: [
                   Ink.image(
@@ -117,6 +118,41 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
                         ),
                       ),
                     ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Card(
+            clipBehavior: Clip.antiAlias,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            child: Column(
+              children: [
+                ListTile(
+                  title: Text('QR Code',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                ),
+                Divider(),
+                Stack(alignment: Alignment.center, children: [
+                  Ink.image(
+                    image: AssetImage('assets/images/icon_mycard_qrcode.png'),
+                    fit: BoxFit.fill,
+                    height: 200,
+                    width: 200,
+                    child: InkWell(
+                      onTap: () {},
+                    ),
+                  ),
+                ]),
+                Divider(),
+                ListTile(
+                  title: Text(
+                    'ใช้โทรศัพท์ Scan เพื่อดูข้อมูลบัตร',
+                    style: TextStyle(fontSize: 13, color: Colors.grey),
                   ),
                 ),
               ],
