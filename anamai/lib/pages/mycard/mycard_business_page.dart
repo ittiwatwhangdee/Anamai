@@ -120,6 +120,33 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
                     ],
                   ),
                 ),
+                Container(
+                  margin: EdgeInsets.only(top: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        child: RaisedButton.icon(
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10.0))),
+                          label: Text(
+                            'ต่ออายุบัตร',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          icon: Icon(
+                            Icons.add,
+                            color: Colors.white,
+                          ),
+                          textColor: Colors.white,
+                          splashColor: Colors.orange[300],
+                          color: Colors.orange,
+                          onPressed: () {},
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
