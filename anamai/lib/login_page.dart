@@ -1,8 +1,10 @@
+import 'dart:convert';
 import 'package:anamai/pages/register/register_pdpa_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'forgot_password_page.dart';
 import 'home_page.dart';
+import 'package:http/http.dart' as http;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -12,10 +14,65 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final _formKey = GlobalKey<FormState>();
+
+  TextEditingController user = TextEditingController();
+  TextEditingController pass = TextEditingController();
+
+  Future login() async {
+    var url = "http://192.168.1.8/flutter_login/login.php";
+    var response = await http.post(Uri.parse(url), body: {
+      "username": user.text,
+      "password": pass.text,
+    });
+    var data = json.decode(response.body);
+    if (data == "Success") {
+      final snackBar = SnackBar(
+        content: Row(
+          children: <Widget>[
+            Icon(
+              Icons.check_circle_rounded,
+              color: Colors.white,
+            ),
+            Text('  เข้าสู่ระบบสำเร็จ'),
+          ],
+        ),
+        backgroundColor: Colors.green,
+        action: SnackBarAction(
+          label: '',
+          onPressed: () {},
+        ),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => HomePage()));
+    } else {
+      final snackBar = SnackBar(
+        content: Row(
+          children: <Widget>[
+            Icon(
+              Icons.cancel,
+              color: Colors.white,
+            ),
+            Text('  ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง!'),
+          ],
+        ),
+        backgroundColor: Colors.red,
+        action: SnackBarAction(
+          label: '',
+          onPressed: () {},
+        ),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
+        body: Form(
+      key: _formKey,
+      child: SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
@@ -75,7 +132,14 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     Container(
                       width: 250,
-                      child: TextField(
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'กรุณาใส่ชื่อผู้ใช้งาน';
+                          }
+                          return null;
+                        },
+                        controller: user,
                         decoration: InputDecoration(
                           labelText: 'ชื่อผู้ใช้งาน',
                           labelStyle: TextStyle(fontSize: 13),
@@ -88,8 +152,15 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     Container(
                       width: 250,
-                      child: TextField(
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'กรุณาใส่รหัสผ่าน';
+                          }
+                          return null;
+                        },
                         obscureText: true,
+                        controller: pass,
                         decoration: InputDecoration(
                           labelText: 'รหัสผ่าน',
                           labelStyle: TextStyle(fontSize: 13),
@@ -155,12 +226,9 @@ class _LoginPageState extends State<LoginPage> {
                             fontWeight: FontWeight.bold),
                       ),
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomePage()),
-                        );
+                        login();
                       },
+                      // onPressed: () => doLogin(),
                     ))
                   ],
                 ),
@@ -169,6 +237,6 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
-    );
+    ));
   }
 }

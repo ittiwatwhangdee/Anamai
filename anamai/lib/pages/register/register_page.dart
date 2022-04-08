@@ -1,6 +1,9 @@
+import 'dart:convert';
+import 'package:anamai/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:http/http.dart' as http;
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -10,37 +13,78 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back_ios_new_outlined),
-        ),
-        title: const Text(
-          'ลงทะเบียน',
-          style: TextStyle(
-            fontSize: 18,
-          ),
-        ),
-        backgroundColor: Colors.blue[800],
-      ),
-      body: MyStatelessWidget(),
-    );
-  }
-}
-
-class MyStatelessWidget extends StatelessWidget {
-  MyStatelessWidget({Key? key}) : super(key: key);
-
   final _formKey = GlobalKey<FormState>();
 
+  TextEditingController user = TextEditingController();
+  TextEditingController pass = TextEditingController();
+
+  Future register() async {
+    var url = "http://192.168.1.8/flutter_login/register.php";
+    var response = await http.post(Uri.parse(url), body: {
+      "username": user.text,
+      "password": pass.text,
+    });
+
+    var data = json.decode(response.body);
+    if (data == "Error") {
+      final snackBar = SnackBar(
+        content: Row(
+          children: <Widget>[
+            Icon(
+              Icons.cancel,
+              color: Colors.white,
+            ),
+            Text('  ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง!'),
+          ],
+        ),
+        backgroundColor: Colors.red,
+        action: SnackBarAction(
+          label: '',
+          onPressed: () {},
+        ),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    } else {
+      final snackBar = SnackBar(
+        content: Row(
+          children: <Widget>[
+            Icon(
+              Icons.check_circle_rounded,
+              color: Colors.white,
+            ),
+            Text('  สมัครสมาชิกสำเร็จ'),
+          ],
+        ),
+        backgroundColor: Colors.green,
+        action: SnackBarAction(
+          label: '',
+          onPressed: () {},
+        ),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => LoginPage()));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back_ios_new_outlined),
+          ),
+          title: const Text(
+            'ลงทะเบียน',
+            style: TextStyle(
+              fontSize: 18,
+            ),
+          ),
+          backgroundColor: Colors.blue[800],
+        ),
         body: Padding(
             padding: const EdgeInsets.all(25),
             child: Form(
@@ -101,411 +145,414 @@ class MyStatelessWidget extends StatelessWidget {
 
                   ///อีเมลผู้ใช้งาน
                   TextField(
+                      controller: user,
                       decoration: InputDecoration(
-                    hintText: 'อีเมลผู้ใช้งาน',
-                    // counterText: '0/13',
-                    border: OutlineInputBorder(),
-                  )),
+                        hintText: 'อีเมลผู้ใช้งาน',
+                        // counterText: '0/13',
+                        border: OutlineInputBorder(),
+                      )),
                   Divider(),
 
                   ///รหัสผ่าน
                   TextField(
+                      controller: pass,
+                      obscureText: true,
                       decoration: InputDecoration(
-                    hintText: 'รหัสผ่าน',
-                    border: OutlineInputBorder(),
-                    suffixIcon: Icon(
-                      Icons.visibility_off,
-                      size: 17,
-                    ),
-                  )),
+                        hintText: 'รหัสผ่าน',
+                        border: OutlineInputBorder(),
+                        suffixIcon: Icon(
+                          Icons.visibility_off,
+                          size: 17,
+                        ),
+                      )),
                   Divider(),
 
-                  ///ยืนยันรหัสผ่าน
-                  TextField(
-                      decoration: InputDecoration(
-                    hintText: 'ยืนยันรหัสผ่าน',
-                    border: OutlineInputBorder(),
-                    suffixIcon: Icon(
-                      Icons.visibility_off,
-                      size: 17,
-                    ),
-                  )),
-                  Divider(),
+                  // ///ยืนยันรหัสผ่าน
+                  // TextField(
+                  //     decoration: InputDecoration(
+                  //   hintText: 'ยืนยันรหัสผ่าน',
+                  //   border: OutlineInputBorder(),
+                  //   suffixIcon: Icon(
+                  //     Icons.visibility_off,
+                  //     size: 17,
+                  //   ),
+                  // )),
+                  // Divider(),
 
-                  Container(
-                    padding: EdgeInsets.fromLTRB(0, 12, 8, 20),
-                    child: Text(
-                      'ประเภทผู้ใช้งาน',
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
+                  // Container(
+                  //   padding: EdgeInsets.fromLTRB(0, 12, 8, 20),
+                  //   child: Text(
+                  //     'ประเภทผู้ใช้งาน',
+                  //     style: TextStyle(
+                  //         fontSize: 18,
+                  //         color: Colors.blue,
+                  //         fontWeight: FontWeight.bold),
+                  //   ),
+                  // ),
 
-                  //เลือกประเภทผู้ใช้งาน
-                  DropdownSearch<String>(
-                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
-                    dropdownSearchDecoration: InputDecoration(
-                      hintText: "กรุณาเลือก",
-                      labelText: "เลือกประเภทผู้ใช้งาน*",
-                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
-                      border: OutlineInputBorder(),
-                    ),
-                    mode: Mode.MENU,
-                    showSelectedItems: true,
-                    items: [
-                      "ประชาชน",
-                      "ผู้ประกอบกิจการ",
-                      "ผู้สัมผัสอาหาร",
-                      "เจ้าหน้าที่รัฐ",
-                      "ผู้ดูแลผู้สูงอายุ"
-                          "หน่วยงานอบรม",
-                    ],
-                    showClearButton: true,
-                    onChanged: print,
-                    popupItemDisabled: (String? s) =>
-                        s?.startsWith('I') ?? false,
-                    clearButtonSplashRadius: 20,
-                    selectedItem: "กรุณาเลือก",
-                  ),
-                  Divider(),
+                  // //เลือกประเภทผู้ใช้งาน
+                  // DropdownSearch<String>(
+                  //   validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                  //   dropdownSearchDecoration: InputDecoration(
+                  //     hintText: "กรุณาเลือก",
+                  //     labelText: "เลือกประเภทผู้ใช้งาน*",
+                  //     contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                  //     border: OutlineInputBorder(),
+                  //   ),
+                  //   mode: Mode.MENU,
+                  //   showSelectedItems: true,
+                  //   items: [
+                  //     "ประชาชน",
+                  //     "ผู้ประกอบกิจการ",
+                  //     "ผู้สัมผัสอาหาร",
+                  //     "เจ้าหน้าที่รัฐ",
+                  //     "ผู้ดูแลผู้สูงอายุ"
+                  //         "หน่วยงานอบรม",
+                  //   ],
+                  //   showClearButton: true,
+                  //   onChanged: print,
+                  //   popupItemDisabled: (String? s) =>
+                  //       s?.startsWith('I') ?? false,
+                  //   clearButtonSplashRadius: 20,
+                  //   selectedItem: "กรุณาเลือก",
+                  // ),
+                  // Divider(),
 
-                  //เลือกประเภทสมาชิก
-                  DropdownSearch<String>(
-                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
-                    dropdownSearchDecoration: InputDecoration(
-                      hintText: "กรุณาเลือก",
-                      labelText: "เลือกประเภทสมาชิก*",
-                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
-                      border: OutlineInputBorder(),
-                    ),
-                    mode: Mode.MENU,
-                    showSelectedItems: true,
-                    items: [
-                      "ประชาชน/พนักงาน",
-                      "สถานประกอบการ/ร้านค้า",
-                    ],
-                    showClearButton: true,
-                    onChanged: print,
-                    popupItemDisabled: (String? s) =>
-                        s?.startsWith('I') ?? false,
-                    clearButtonSplashRadius: 20,
-                    selectedItem: "กรุณาเลือก",
-                  ),
-                  Divider(),
+                  // //เลือกประเภทสมาชิก
+                  // DropdownSearch<String>(
+                  //   validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                  //   dropdownSearchDecoration: InputDecoration(
+                  //     hintText: "กรุณาเลือก",
+                  //     labelText: "เลือกประเภทสมาชิก*",
+                  //     contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                  //     border: OutlineInputBorder(),
+                  //   ),
+                  //   mode: Mode.MENU,
+                  //   showSelectedItems: true,
+                  //   items: [
+                  //     "ประชาชน/พนักงาน",
+                  //     "สถานประกอบการ/ร้านค้า",
+                  //   ],
+                  //   showClearButton: true,
+                  //   onChanged: print,
+                  //   popupItemDisabled: (String? s) =>
+                  //       s?.startsWith('I') ?? false,
+                  //   clearButtonSplashRadius: 20,
+                  //   selectedItem: "กรุณาเลือก",
+                  // ),
+                  // Divider(),
 
-                  //เลือกประเภทบุคคล
-                  DropdownSearch<String>(
-                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
-                    dropdownSearchDecoration: InputDecoration(
-                      hintText: "กรุณาเลือก",
-                      labelText: "เลือกประเภทบุคคล*",
-                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
-                      border: OutlineInputBorder(),
-                    ),
-                    mode: Mode.MENU,
-                    showSelectedItems: true,
-                    items: [
-                      "นิติบุคคล",
-                      "บุคคลธรรมดา",
-                      "อื่นๆ",
-                    ],
-                    showClearButton: true,
-                    onChanged: print,
-                    popupItemDisabled: (String? s) =>
-                        s?.startsWith('I') ?? false,
-                    clearButtonSplashRadius: 20,
-                    selectedItem: "กรุณาเลือก",
-                  ),
-                  Divider(),
+                  // //เลือกประเภทบุคคล
+                  // DropdownSearch<String>(
+                  //   validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                  //   dropdownSearchDecoration: InputDecoration(
+                  //     hintText: "กรุณาเลือก",
+                  //     labelText: "เลือกประเภทบุคคล*",
+                  //     contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                  //     border: OutlineInputBorder(),
+                  //   ),
+                  //   mode: Mode.MENU,
+                  //   showSelectedItems: true,
+                  //   items: [
+                  //     "นิติบุคคล",
+                  //     "บุคคลธรรมดา",
+                  //     "อื่นๆ",
+                  //   ],
+                  //   showClearButton: true,
+                  //   onChanged: print,
+                  //   popupItemDisabled: (String? s) =>
+                  //       s?.startsWith('I') ?? false,
+                  //   clearButtonSplashRadius: 20,
+                  //   selectedItem: "กรุณาเลือก",
+                  // ),
+                  // Divider(),
 
-                  //อื่นๆ*โปรดระบุ
-                  TextField(
-                      decoration: InputDecoration(
-                    hintText: 'อื่นๆ*โปรดระบุ',
-                    // helperText: 'Helper Text',
-                    // counterText: '0 characters',
-                    border: OutlineInputBorder(),
-                  )),
-                  Divider(),
+                  // //อื่นๆ*โปรดระบุ
+                  // TextField(
+                  //     decoration: InputDecoration(
+                  //   hintText: 'อื่นๆ*โปรดระบุ',
+                  //   // helperText: 'Helper Text',
+                  //   // counterText: '0 characters',
+                  //   border: OutlineInputBorder(),
+                  // )),
+                  // Divider(),
 
-                  Container(
-                    padding: EdgeInsets.fromLTRB(0, 12, 8, 20),
-                    child: Text(
-                      'ข้อมูลผู้ใช้งาน',
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
+                  // Container(
+                  //   padding: EdgeInsets.fromLTRB(0, 12, 8, 20),
+                  //   child: Text(
+                  //     'ข้อมูลผู้ใช้งาน',
+                  //     style: TextStyle(
+                  //         fontSize: 18,
+                  //         color: Colors.blue,
+                  //         fontWeight: FontWeight.bold),
+                  //   ),
+                  // ),
 
-                  //รหัสบัตรประจำตัวประชาชน
-                  TextField(
-                      decoration: InputDecoration(
-                    hintText: 'รหัสบัตรประจำตัวประชาชน',
-                    counterText: '0/13',
-                    border: OutlineInputBorder(),
-                  )),
-                  Divider(),
+                  // //รหัสบัตรประจำตัวประชาชน
+                  // TextField(
+                  //     decoration: InputDecoration(
+                  //   hintText: 'รหัสบัตรประจำตัวประชาชน',
+                  //   counterText: '0/13',
+                  //   border: OutlineInputBorder(),
+                  // )),
+                  // Divider(),
 
-                  //กรุณาเลือกคำนำหน้า
-                  DropdownSearch<String>(
-                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
-                    dropdownSearchDecoration: InputDecoration(
-                      hintText: "กรุณาเลือก",
-                      labelText: "คำนำหน้า*",
-                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
-                      border: OutlineInputBorder(),
-                    ),
-                    mode: Mode.MENU,
-                    showSelectedItems: true,
-                    items: [
-                      "นางสาว",
-                      "นาง",
-                      "นาย",
-                    ],
-                    showClearButton: true,
-                    onChanged: print,
-                    popupItemDisabled: (String? s) =>
-                        s?.startsWith('I') ?? false,
-                    clearButtonSplashRadius: 20,
-                    selectedItem: "กรุณาเลือก",
-                  ),
-                  Divider(),
+                  // //กรุณาเลือกคำนำหน้า
+                  // DropdownSearch<String>(
+                  //   validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                  //   dropdownSearchDecoration: InputDecoration(
+                  //     hintText: "กรุณาเลือก",
+                  //     labelText: "คำนำหน้า*",
+                  //     contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                  //     border: OutlineInputBorder(),
+                  //   ),
+                  //   mode: Mode.MENU,
+                  //   showSelectedItems: true,
+                  //   items: [
+                  //     "นางสาว",
+                  //     "นาง",
+                  //     "นาย",
+                  //   ],
+                  //   showClearButton: true,
+                  //   onChanged: print,
+                  //   popupItemDisabled: (String? s) =>
+                  //       s?.startsWith('I') ?? false,
+                  //   clearButtonSplashRadius: 20,
+                  //   selectedItem: "กรุณาเลือก",
+                  // ),
+                  // Divider(),
 
-                  //ชื่อ
-                  TextField(
-                      decoration: InputDecoration(
-                    hintText: 'ชื่อ',
-                    border: OutlineInputBorder(),
-                  )),
-                  Divider(),
+                  // //ชื่อ
+                  // TextField(
+                  //     decoration: InputDecoration(
+                  //   hintText: 'ชื่อ',
+                  //   border: OutlineInputBorder(),
+                  // )),
+                  // Divider(),
 
-                  //นามสกุล
-                  TextField(
-                      decoration: InputDecoration(
-                    hintText: 'นามสกุล',
-                    border: OutlineInputBorder(),
-                  )),
-                  Divider(),
+                  // //นามสกุล
+                  // TextField(
+                  //     decoration: InputDecoration(
+                  //   hintText: 'นามสกุล',
+                  //   border: OutlineInputBorder(),
+                  // )),
+                  // Divider(),
 
-                  //เพศ
-                  DropdownSearch<String>(
-                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
-                    dropdownSearchDecoration: InputDecoration(
-                      hintText: "กรุณาเลือก",
-                      labelText: "เพศ*",
-                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
-                      border: OutlineInputBorder(),
-                    ),
-                    mode: Mode.MENU,
-                    showSelectedItems: true,
-                    items: [
-                      "ชาย",
-                      "หญิง",
-                    ],
-                    showClearButton: true,
-                    onChanged: print,
-                    popupItemDisabled: (String? s) =>
-                        s?.startsWith('I') ?? false,
-                    clearButtonSplashRadius: 20,
-                    selectedItem: "กรุณาเลือก",
-                  ),
-                  Divider(),
+                  // //เพศ
+                  // DropdownSearch<String>(
+                  //   validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                  //   dropdownSearchDecoration: InputDecoration(
+                  //     hintText: "กรุณาเลือก",
+                  //     labelText: "เพศ*",
+                  //     contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                  //     border: OutlineInputBorder(),
+                  //   ),
+                  //   mode: Mode.MENU,
+                  //   showSelectedItems: true,
+                  //   items: [
+                  //     "ชาย",
+                  //     "หญิง",
+                  //   ],
+                  //   showClearButton: true,
+                  //   onChanged: print,
+                  //   popupItemDisabled: (String? s) =>
+                  //       s?.startsWith('I') ?? false,
+                  //   clearButtonSplashRadius: 20,
+                  //   selectedItem: "กรุณาเลือก",
+                  // ),
+                  // Divider(),
 
-                  //หมู่เลือด
-                  DropdownSearch<String>(
-                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
-                    dropdownSearchDecoration: InputDecoration(
-                      hintText: "กรุณาเลือก",
-                      labelText: "หมู่เลือด*",
-                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
-                      border: OutlineInputBorder(),
-                    ),
-                    mode: Mode.MENU,
-                    showSelectedItems: true,
-                    items: [
-                      "เอ",
-                      "บี",
-                      "โอ",
-                      "โอบี",
-                    ],
-                    showClearButton: true,
-                    onChanged: print,
-                    popupItemDisabled: (String? s) =>
-                        s?.startsWith('I') ?? false,
-                    clearButtonSplashRadius: 20,
-                    selectedItem: "กรุณาเลือก",
-                  ),
-                  Divider(),
+                  // //หมู่เลือด
+                  // DropdownSearch<String>(
+                  //   validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                  //   dropdownSearchDecoration: InputDecoration(
+                  //     hintText: "กรุณาเลือก",
+                  //     labelText: "หมู่เลือด*",
+                  //     contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                  //     border: OutlineInputBorder(),
+                  //   ),
+                  //   mode: Mode.MENU,
+                  //   showSelectedItems: true,
+                  //   items: [
+                  //     "เอ",
+                  //     "บี",
+                  //     "โอ",
+                  //     "โอบี",
+                  //   ],
+                  //   showClearButton: true,
+                  //   onChanged: print,
+                  //   popupItemDisabled: (String? s) =>
+                  //       s?.startsWith('I') ?? false,
+                  //   clearButtonSplashRadius: 20,
+                  //   selectedItem: "กรุณาเลือก",
+                  // ),
+                  // Divider(),
 
-                  //วัน/เดือน/ปีเกิด
-                  TextField(
-                      decoration: InputDecoration(
-                    hintText: 'วัน/เดือน/ปีเกิด',
-                    border: OutlineInputBorder(),
-                  )),
-                  Divider(),
+                  // //วัน/เดือน/ปีเกิด
+                  // TextField(
+                  //     decoration: InputDecoration(
+                  //   hintText: 'วัน/เดือน/ปีเกิด',
+                  //   border: OutlineInputBorder(),
+                  // )),
+                  // Divider(),
 
-                  //อายุ(ปี)
-                  TextField(
-                      decoration: InputDecoration(
-                    hintText: 'อายุ(ปี)',
-                    border: OutlineInputBorder(),
-                  )),
-                  Divider(),
+                  // //อายุ(ปี)
+                  // TextField(
+                  //     decoration: InputDecoration(
+                  //   hintText: 'อายุ(ปี)',
+                  //   border: OutlineInputBorder(),
+                  // )),
+                  // Divider(),
 
-                  //อายุ(เดือน)
-                  TextField(
-                      decoration: InputDecoration(
-                    hintText: 'อายุ(เดือน)',
-                    border: OutlineInputBorder(),
-                  )),
-                  Divider(),
+                  // //อายุ(เดือน)
+                  // TextField(
+                  //     decoration: InputDecoration(
+                  //   hintText: 'อายุ(เดือน)',
+                  //   border: OutlineInputBorder(),
+                  // )),
+                  // Divider(),
 
-                  //เบอร์โทรศัพท์
-                  TextField(
-                      decoration: InputDecoration(
-                    hintText: 'เบอร์โทรศัพท์',
-                    counterText: '0/10',
-                    border: OutlineInputBorder(),
-                  )),
-                  Divider(),
+                  // //เบอร์โทรศัพท์
+                  // TextField(
+                  //     decoration: InputDecoration(
+                  //   hintText: 'เบอร์โทรศัพท์',
+                  //   counterText: '0/10',
+                  //   border: OutlineInputBorder(),
+                  // )),
+                  // Divider(),
 
-                  //อีเมล
-                  TextField(
-                      decoration: InputDecoration(
-                    hintText: 'อีเมล',
-                    border: OutlineInputBorder(),
-                  )),
-                  Divider(),
+                  // //อีเมล
+                  // TextField(
+                  //     decoration: InputDecoration(
+                  //   hintText: 'อีเมล',
+                  //   border: OutlineInputBorder(),
+                  // )),
+                  // Divider(),
 
-                  Container(
-                    padding: EdgeInsets.fromLTRB(0, 12, 8, 20),
-                    child: Text(
-                      'ที่อยู่ปัจจุบัน',
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
+                  // Container(
+                  //   padding: EdgeInsets.fromLTRB(0, 12, 8, 20),
+                  //   child: Text(
+                  //     'ที่อยู่ปัจจุบัน',
+                  //     style: TextStyle(
+                  //         fontSize: 18,
+                  //         color: Colors.blue,
+                  //         fontWeight: FontWeight.bold),
+                  //   ),
+                  // ),
 
-                  //บ้านเลขที่
-                  TextField(
-                      decoration: InputDecoration(
-                    hintText: 'บ้านเลขที่',
-                    border: OutlineInputBorder(),
-                  )),
-                  Divider(),
+                  // //บ้านเลขที่
+                  // TextField(
+                  //     decoration: InputDecoration(
+                  //   hintText: 'บ้านเลขที่',
+                  //   border: OutlineInputBorder(),
+                  // )),
+                  // Divider(),
 
-                  //หมู่
-                  TextField(
-                      decoration: InputDecoration(
-                    hintText: 'หมู่',
-                    border: OutlineInputBorder(),
-                  )),
-                  Divider(),
+                  // //หมู่
+                  // TextField(
+                  //     decoration: InputDecoration(
+                  //   hintText: 'หมู่',
+                  //   border: OutlineInputBorder(),
+                  // )),
+                  // Divider(),
 
-                  //ถนน
-                  TextField(
-                      decoration: InputDecoration(
-                    hintText: 'ถนน',
-                    border: OutlineInputBorder(),
-                  )),
-                  Divider(),
+                  // //ถนน
+                  // TextField(
+                  //     decoration: InputDecoration(
+                  //   hintText: 'ถนน',
+                  //   border: OutlineInputBorder(),
+                  // )),
+                  // Divider(),
 
-                  ///จังหวัด
-                  DropdownSearch<String>(
-                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
-                    dropdownSearchDecoration: InputDecoration(
-                      hintText: "กรุณาเลือกจังหวัดก่อน",
-                      labelText: "จังหวัด*",
-                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
-                      border: OutlineInputBorder(),
-                    ),
-                    mode: Mode.MENU,
-                    showSelectedItems: true,
-                    items: [
-                      "เชียงใหม่",
-                      "เชียงราย",
-                      "เพชรบุรี",
-                      "เพชรบูรณ์",
-                    ],
-                    showClearButton: true,
-                    onChanged: print,
-                    popupItemDisabled: (String? s) =>
-                        s?.startsWith('I') ?? false,
-                    clearButtonSplashRadius: 20,
-                    selectedItem: "กรุณาเลือกจังหวัดก่อน",
-                  ),
-                  Divider(),
+                  // ///จังหวัด
+                  // DropdownSearch<String>(
+                  //   validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                  //   dropdownSearchDecoration: InputDecoration(
+                  //     hintText: "กรุณาเลือกจังหวัดก่อน",
+                  //     labelText: "จังหวัด*",
+                  //     contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                  //     border: OutlineInputBorder(),
+                  //   ),
+                  //   mode: Mode.MENU,
+                  //   showSelectedItems: true,
+                  //   items: [
+                  //     "เชียงใหม่",
+                  //     "เชียงราย",
+                  //     "เพชรบุรี",
+                  //     "เพชรบูรณ์",
+                  //   ],
+                  //   showClearButton: true,
+                  //   onChanged: print,
+                  //   popupItemDisabled: (String? s) =>
+                  //       s?.startsWith('I') ?? false,
+                  //   clearButtonSplashRadius: 20,
+                  //   selectedItem: "กรุณาเลือกจังหวัดก่อน",
+                  // ),
+                  // Divider(),
 
-                  //อำเภอ/เขต
-                  DropdownSearch<String>(
-                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
-                    dropdownSearchDecoration: InputDecoration(
-                      hintText: "กรุณาเลือกอำเภอ/เขตก่อน",
-                      labelText: "อำเภอ/เขต*",
-                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
-                      border: OutlineInputBorder(),
-                    ),
-                    mode: Mode.MENU,
-                    showSelectedItems: true,
-                    items: [
-                      "-",
-                      "-",
-                      "-",
-                      "-",
-                    ],
-                    showClearButton: true,
-                    onChanged: print,
-                    popupItemDisabled: (String? s) =>
-                        s?.startsWith('I') ?? false,
-                    clearButtonSplashRadius: 20,
-                    selectedItem: "กรุณาเลือกอำเภอ/เขตก่อน",
-                  ),
-                  Divider(),
+                  // //อำเภอ/เขต
+                  // DropdownSearch<String>(
+                  //   validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                  //   dropdownSearchDecoration: InputDecoration(
+                  //     hintText: "กรุณาเลือกอำเภอ/เขตก่อน",
+                  //     labelText: "อำเภอ/เขต*",
+                  //     contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                  //     border: OutlineInputBorder(),
+                  //   ),
+                  //   mode: Mode.MENU,
+                  //   showSelectedItems: true,
+                  //   items: [
+                  //     "-",
+                  //     "-",
+                  //     "-",
+                  //     "-",
+                  //   ],
+                  //   showClearButton: true,
+                  //   onChanged: print,
+                  //   popupItemDisabled: (String? s) =>
+                  //       s?.startsWith('I') ?? false,
+                  //   clearButtonSplashRadius: 20,
+                  //   selectedItem: "กรุณาเลือกอำเภอ/เขตก่อน",
+                  // ),
+                  // Divider(),
 
-                  ///รหัสไปรษณีย์
-                  TextField(
-                      decoration: InputDecoration(
-                    hintText: 'รหัสไปรษณีย์',
-                    border: OutlineInputBorder(),
-                  )),
-                  Divider(),
+                  // ///รหัสไปรษณีย์
+                  // TextField(
+                  //     decoration: InputDecoration(
+                  //   hintText: 'รหัสไปรษณีย์',
+                  //   border: OutlineInputBorder(),
+                  // )),
+                  // Divider(),
 
-                  SizedBox(
-                    height: 20,
-                  ),
+                  // SizedBox(
+                  //   height: 20,
+                  // ),
+
+                  // GestureDetector(
+                  //     child: ElevatedButton(
+                  //   style: ElevatedButton.styleFrom(
+                  //       primary: Colors.grey,
+                  //       fixedSize: const Size(250, 43),
+                  //       shape: RoundedRectangleBorder(
+                  //           borderRadius: BorderRadius.circular(10))),
+                  //   child: const Text(
+                  //     'ย้อนกลับ',
+                  //     style: TextStyle(
+                  //         color: Colors.white,
+                  //         fontSize: 17,
+                  //         fontWeight: FontWeight.bold),
+                  //   ),
+                  //   onPressed: () {},
+                  // )),
+
+                  // SizedBox(
+                  //   height: 20,
+                  // ),
 
                   GestureDetector(
                       child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: Colors.grey,
-                        fixedSize: const Size(250, 43),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10))),
-                    child: const Text(
-                      'ย้อนกลับ',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    onPressed: () {},
-                  )),
-
-                  SizedBox(
-                    height: 20,
-                  ),
-
-                  GestureDetector(
-                      child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.blue,
+                        primary: Colors.blue.shade800,
                         fixedSize: const Size(250, 43),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
@@ -516,7 +563,9 @@ class MyStatelessWidget extends StatelessWidget {
                           fontSize: 17,
                           fontWeight: FontWeight.bold),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      register();
+                    },
                   ))
                 ]))));
   }
