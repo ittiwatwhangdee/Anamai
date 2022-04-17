@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -9,43 +11,27 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back_ios_new_outlined),
-        ),
-        title: const Text(
-          'ข้อมูลส่วนตัว',
-          style: TextStyle(
-            fontSize: 18,
-          ),
-        ),
-        backgroundColor: Colors.blue[800],
-      ),
-      body: MyStatelessWidget(),
-    );
-  }
-}
-
-class MyStatelessWidget extends StatefulWidget {
-  MyStatelessWidget({Key? key}) : super(key: key);
-
-  @override
-  _MyStatelessWidgetState createState() => _MyStatelessWidgetState();
-}
-
-class _MyStatelessWidgetState extends State<MyStatelessWidget> {
   final _formKey = GlobalKey<FormState>();
   bool _passwordVisible = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back_ios_new_outlined),
+          ),
+          title: const Text(
+            'ข้อมูลส่วนตัว',
+            style: TextStyle(
+              fontSize: 18,
+            ),
+          ),
+          backgroundColor: Colors.blue[800],
+        ),
         body: Padding(
             padding: const EdgeInsets.all(25),
             child: Form(

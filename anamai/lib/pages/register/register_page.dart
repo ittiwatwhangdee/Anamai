@@ -17,12 +17,16 @@ class _RegisterPageState extends State<RegisterPage> {
 
   TextEditingController user = TextEditingController();
   TextEditingController pass = TextEditingController();
+  TextEditingController fname = TextEditingController();
+  TextEditingController lname = TextEditingController();
 
   Future register() async {
-    var url = "http://192.168.1.8/flutter_login/register.php";
+    var url = "http://192.168.1.7/flutter_login/register.php";
     var response = await http.post(Uri.parse(url), body: {
       "username": user.text,
       "password": pass.text,
+      "firstname": fname.text,
+      "lastname": lname.text,
     });
 
     var data = json.decode(response.body);
@@ -322,21 +326,23 @@ class _RegisterPageState extends State<RegisterPage> {
                   // ),
                   // Divider(),
 
-                  // //ชื่อ
-                  // TextField(
-                  //     decoration: InputDecoration(
-                  //   hintText: 'ชื่อ',
-                  //   border: OutlineInputBorder(),
-                  // )),
-                  // Divider(),
+                  //ชื่อ
+                  TextField(
+                      controller: fname,
+                      decoration: InputDecoration(
+                        hintText: 'ชื่อ',
+                        border: OutlineInputBorder(),
+                      )),
+                  Divider(),
 
-                  // //นามสกุล
-                  // TextField(
-                  //     decoration: InputDecoration(
-                  //   hintText: 'นามสกุล',
-                  //   border: OutlineInputBorder(),
-                  // )),
-                  // Divider(),
+                  //นามสกุล
+                  TextField(
+                      controller: lname,
+                      decoration: InputDecoration(
+                        hintText: 'นามสกุล',
+                        border: OutlineInputBorder(),
+                      )),
+                  Divider(),
 
                   // //เพศ
                   // DropdownSearch<String>(

@@ -8,6 +8,8 @@ import 'pages/notifications/noti_page.dart';
 import 'profile_page.dart';
 import 'package:flutter/material.dart';
 import 'login_page.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 void main() => runApp(const HomePage());
 
