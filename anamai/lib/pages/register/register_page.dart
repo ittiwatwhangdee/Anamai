@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:anamai/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_search/dropdown_search.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 
 class RegisterPage extends StatefulWidget {
@@ -19,6 +18,7 @@ class _RegisterPageState extends State<RegisterPage> {
   String selecttypemembership = '';
   String selecttypeperson = '';
   String selectprefix = '';
+  String selectgender = '';
 
   TextEditingController user = TextEditingController();
   TextEditingController pass = TextEditingController();
@@ -29,6 +29,7 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController prefix = TextEditingController();
   TextEditingController fname = TextEditingController();
   TextEditingController lname = TextEditingController();
+  TextEditingController gender = TextEditingController();
   TextEditingController phone = TextEditingController();
   TextEditingController address_no = TextEditingController();
   TextEditingController address_moo = TextEditingController();
@@ -46,6 +47,7 @@ class _RegisterPageState extends State<RegisterPage> {
       "prefix": selectprefix,
       "firstname": fname.text,
       "lastname": lname.text,
+      "gender": selectgender,
       "phone": phone.text,
       "address_no": address_no.text,
       "address_moo": address_moo.text,
@@ -388,29 +390,34 @@ class _RegisterPageState extends State<RegisterPage> {
                       )),
                   Divider(),
 
-                  // //เพศ
-                  // DropdownSearch<String>(
-                  //   validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
-                  //   dropdownSearchDecoration: InputDecoration(
-                  //     hintText: "กรุณาเลือก",
-                  //     labelText: "เพศ*",
-                  //     contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
-                  //     border: OutlineInputBorder(),
-                  //   ),
-                  //   mode: Mode.MENU,
-                  //   showSelectedItems: true,
-                  //   items: [
-                  //     "ชาย",
-                  //     "หญิง",
-                  //   ],
-                  //   showClearButton: true,
-                  //   onChanged: print,
-                  //   popupItemDisabled: (String? s) =>
-                  //       s?.startsWith('I') ?? false,
-                  //   clearButtonSplashRadius: 20,
-                  //   selectedItem: "กรุณาเลือก",
-                  // ),
-                  // Divider(),
+                  //เพศ
+                  DropdownSearch<String>(
+                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                    dropdownSearchDecoration: InputDecoration(
+                      hintText: "กรุณาเลือก",
+                      labelText: "เพศ*",
+                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                      border: OutlineInputBorder(),
+                    ),
+                    mode: Mode.MENU,
+                    showSelectedItems: true,
+                    items: [
+                      "ชาย",
+                      "หญิง",
+                    ],
+                    showClearButton: true,
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        selectgender = newValue!;
+                        print(selectgender);
+                      });
+                    },
+                    popupItemDisabled: (String? s) =>
+                        s?.startsWith('I') ?? false,
+                    clearButtonSplashRadius: 20,
+                    selectedItem: "กรุณาเลือก",
+                  ),
+                  Divider(),
 
                   // //หมู่เลือด
                   // DropdownSearch<String>(
