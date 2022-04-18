@@ -17,8 +17,13 @@ class _RegisterPageState extends State<RegisterPage> {
 
   TextEditingController user = TextEditingController();
   TextEditingController pass = TextEditingController();
+  TextEditingController card = TextEditingController();
   TextEditingController fname = TextEditingController();
   TextEditingController lname = TextEditingController();
+  TextEditingController phone = TextEditingController();
+  TextEditingController address_no = TextEditingController();
+  TextEditingController address_moo = TextEditingController();
+  TextEditingController address_road = TextEditingController();
 
   Future register() async {
     var url = "http://192.168.1.7/flutter_login/register.php";
@@ -27,6 +32,11 @@ class _RegisterPageState extends State<RegisterPage> {
       "password": pass.text,
       "firstname": fname.text,
       "lastname": lname.text,
+      "idcard": card.text,
+      "phone": phone.text,
+      "address_no": address_no.text,
+      "address_moo": address_moo.text,
+      "address_road": address_road.text,
     });
 
     var data = json.decode(response.body);
@@ -281,25 +291,26 @@ class _RegisterPageState extends State<RegisterPage> {
                   // )),
                   // Divider(),
 
-                  // Container(
-                  //   padding: EdgeInsets.fromLTRB(0, 12, 8, 20),
-                  //   child: Text(
-                  //     'ข้อมูลผู้ใช้งาน',
-                  //     style: TextStyle(
-                  //         fontSize: 18,
-                  //         color: Colors.blue,
-                  //         fontWeight: FontWeight.bold),
-                  //   ),
-                  // ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(0, 12, 8, 20),
+                    child: Text(
+                      'ข้อมูลผู้ใช้งาน',
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
 
-                  // //รหัสบัตรประจำตัวประชาชน
-                  // TextField(
-                  //     decoration: InputDecoration(
-                  //   hintText: 'รหัสบัตรประจำตัวประชาชน',
-                  //   counterText: '0/13',
-                  //   border: OutlineInputBorder(),
-                  // )),
-                  // Divider(),
+                  //รหัสบัตรประจำตัวประชาชน
+                  TextField(
+                      controller: card,
+                      decoration: InputDecoration(
+                        hintText: 'รหัสบัตรประจำตัวประชาชน',
+                        // counterText: '0/13',
+                        border: OutlineInputBorder(),
+                      )),
+                  Divider(),
 
                   // //กรุณาเลือกคำนำหน้า
                   // DropdownSearch<String>(
@@ -418,14 +429,15 @@ class _RegisterPageState extends State<RegisterPage> {
                   // )),
                   // Divider(),
 
-                  // //เบอร์โทรศัพท์
-                  // TextField(
-                  //     decoration: InputDecoration(
-                  //   hintText: 'เบอร์โทรศัพท์',
-                  //   counterText: '0/10',
-                  //   border: OutlineInputBorder(),
-                  // )),
-                  // Divider(),
+                  //เบอร์โทรศัพท์
+                  TextField(
+                      controller: phone,
+                      decoration: InputDecoration(
+                        hintText: 'เบอร์โทรศัพท์',
+                        // counterText: '0/10',
+                        border: OutlineInputBorder(),
+                      )),
+                  Divider(),
 
                   // //อีเมล
                   // TextField(
@@ -435,40 +447,43 @@ class _RegisterPageState extends State<RegisterPage> {
                   // )),
                   // Divider(),
 
-                  // Container(
-                  //   padding: EdgeInsets.fromLTRB(0, 12, 8, 20),
-                  //   child: Text(
-                  //     'ที่อยู่ปัจจุบัน',
-                  //     style: TextStyle(
-                  //         fontSize: 18,
-                  //         color: Colors.blue,
-                  //         fontWeight: FontWeight.bold),
-                  //   ),
-                  // ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(0, 12, 8, 20),
+                    child: Text(
+                      'ที่อยู่ปัจจุบัน',
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
 
-                  // //บ้านเลขที่
-                  // TextField(
-                  //     decoration: InputDecoration(
-                  //   hintText: 'บ้านเลขที่',
-                  //   border: OutlineInputBorder(),
-                  // )),
-                  // Divider(),
+                  //บ้านเลขที่
+                  TextField(
+                      controller: address_no,
+                      decoration: InputDecoration(
+                        hintText: 'บ้านเลขที่',
+                        border: OutlineInputBorder(),
+                      )),
+                  Divider(),
 
-                  // //หมู่
-                  // TextField(
-                  //     decoration: InputDecoration(
-                  //   hintText: 'หมู่',
-                  //   border: OutlineInputBorder(),
-                  // )),
-                  // Divider(),
+                  //หมู่
+                  TextField(
+                      controller: address_moo,
+                      decoration: InputDecoration(
+                        hintText: 'หมู่',
+                        border: OutlineInputBorder(),
+                      )),
+                  Divider(),
 
-                  // //ถนน
-                  // TextField(
-                  //     decoration: InputDecoration(
-                  //   hintText: 'ถนน',
-                  //   border: OutlineInputBorder(),
-                  // )),
-                  // Divider(),
+                  //ถนน
+                  TextField(
+                      controller: address_road,
+                      decoration: InputDecoration(
+                        hintText: 'ถนน',
+                        border: OutlineInputBorder(),
+                      )),
+                  Divider(),
 
                   // ///จังหวัด
                   // DropdownSearch<String>(
