@@ -15,9 +15,18 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
 
+  String selecttypeuser = '';
+  String selecttypemembership = '';
+  String selecttypeperson = '';
+  String selectprefix = '';
+
   TextEditingController user = TextEditingController();
   TextEditingController pass = TextEditingController();
+  TextEditingController typeuser = TextEditingController();
+  TextEditingController typemembership = TextEditingController();
+  TextEditingController typeperson = TextEditingController();
   TextEditingController card = TextEditingController();
+  TextEditingController prefix = TextEditingController();
   TextEditingController fname = TextEditingController();
   TextEditingController lname = TextEditingController();
   TextEditingController phone = TextEditingController();
@@ -30,9 +39,13 @@ class _RegisterPageState extends State<RegisterPage> {
     var response = await http.post(Uri.parse(url), body: {
       "username": user.text,
       "password": pass.text,
+      "typeuser": selecttypeuser,
+      "typemembership": selecttypemembership,
+      "typeperson": selecttypeperson,
+      "idcard": card.text,
+      "prefix": selectprefix,
       "firstname": fname.text,
       "lastname": lname.text,
-      "idcard": card.text,
       "phone": phone.text,
       "address_no": address_no.text,
       "address_moo": address_moo.text,
@@ -193,93 +206,108 @@ class _RegisterPageState extends State<RegisterPage> {
                   // )),
                   // Divider(),
 
-                  // Container(
-                  //   padding: EdgeInsets.fromLTRB(0, 12, 8, 20),
-                  //   child: Text(
-                  //     'ประเภทผู้ใช้งาน',
-                  //     style: TextStyle(
-                  //         fontSize: 18,
-                  //         color: Colors.blue,
-                  //         fontWeight: FontWeight.bold),
-                  //   ),
-                  // ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(0, 12, 8, 20),
+                    child: Text(
+                      'ประเภทผู้ใช้งาน',
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
 
-                  // //เลือกประเภทผู้ใช้งาน
-                  // DropdownSearch<String>(
-                  //   validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
-                  //   dropdownSearchDecoration: InputDecoration(
-                  //     hintText: "กรุณาเลือก",
-                  //     labelText: "เลือกประเภทผู้ใช้งาน*",
-                  //     contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
-                  //     border: OutlineInputBorder(),
-                  //   ),
-                  //   mode: Mode.MENU,
-                  //   showSelectedItems: true,
-                  //   items: [
-                  //     "ประชาชน",
-                  //     "ผู้ประกอบกิจการ",
-                  //     "ผู้สัมผัสอาหาร",
-                  //     "เจ้าหน้าที่รัฐ",
-                  //     "ผู้ดูแลผู้สูงอายุ"
-                  //         "หน่วยงานอบรม",
-                  //   ],
-                  //   showClearButton: true,
-                  //   onChanged: print,
-                  //   popupItemDisabled: (String? s) =>
-                  //       s?.startsWith('I') ?? false,
-                  //   clearButtonSplashRadius: 20,
-                  //   selectedItem: "กรุณาเลือก",
-                  // ),
-                  // Divider(),
+                  //เลือกประเภทผู้ใช้งาน
+                  DropdownSearch<String>(
+                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                    dropdownSearchDecoration: InputDecoration(
+                      hintText: "กรุณาเลือก",
+                      labelText: "เลือกประเภทผู้ใช้งาน*",
+                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                      border: OutlineInputBorder(),
+                    ),
+                    mode: Mode.MENU,
+                    showSelectedItems: true,
+                    items: [
+                      "ประชาชน",
+                      "ผู้ประกอบกิจการ",
+                      "ผู้สัมผัสอาหาร",
+                      "เจ้าหน้าที่รัฐ",
+                      "ผู้ดูแลผู้สูงอายุ"
+                          "หน่วยงานอบรม",
+                    ],
+                    showClearButton: true,
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        selecttypeuser = newValue!;
+                        print(selecttypeuser);
+                      });
+                    },
+                    popupItemDisabled: (String? s) =>
+                        s?.startsWith('I') ?? false,
+                    clearButtonSplashRadius: 20,
+                    selectedItem: "กรุณาเลือก",
+                  ),
+                  Divider(),
 
-                  // //เลือกประเภทสมาชิก
-                  // DropdownSearch<String>(
-                  //   validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
-                  //   dropdownSearchDecoration: InputDecoration(
-                  //     hintText: "กรุณาเลือก",
-                  //     labelText: "เลือกประเภทสมาชิก*",
-                  //     contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
-                  //     border: OutlineInputBorder(),
-                  //   ),
-                  //   mode: Mode.MENU,
-                  //   showSelectedItems: true,
-                  //   items: [
-                  //     "ประชาชน/พนักงาน",
-                  //     "สถานประกอบการ/ร้านค้า",
-                  //   ],
-                  //   showClearButton: true,
-                  //   onChanged: print,
-                  //   popupItemDisabled: (String? s) =>
-                  //       s?.startsWith('I') ?? false,
-                  //   clearButtonSplashRadius: 20,
-                  //   selectedItem: "กรุณาเลือก",
-                  // ),
-                  // Divider(),
+                  //เลือกประเภทสมาชิก
+                  DropdownSearch<String>(
+                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                    dropdownSearchDecoration: InputDecoration(
+                      hintText: "กรุณาเลือก",
+                      labelText: "เลือกประเภทสมาชิก*",
+                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                      border: OutlineInputBorder(),
+                    ),
+                    mode: Mode.MENU,
+                    showSelectedItems: true,
+                    items: [
+                      "ประชาชน/พนักงาน",
+                      "สถานประกอบการ/ร้านค้า",
+                    ],
+                    showClearButton: true,
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        selecttypemembership = newValue!;
+                        print(selecttypemembership);
+                      });
+                    },
+                    popupItemDisabled: (String? s) =>
+                        s?.startsWith('I') ?? false,
+                    clearButtonSplashRadius: 20,
+                    selectedItem: "กรุณาเลือก",
+                  ),
+                  Divider(),
 
-                  // //เลือกประเภทบุคคล
-                  // DropdownSearch<String>(
-                  //   validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
-                  //   dropdownSearchDecoration: InputDecoration(
-                  //     hintText: "กรุณาเลือก",
-                  //     labelText: "เลือกประเภทบุคคล*",
-                  //     contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
-                  //     border: OutlineInputBorder(),
-                  //   ),
-                  //   mode: Mode.MENU,
-                  //   showSelectedItems: true,
-                  //   items: [
-                  //     "นิติบุคคล",
-                  //     "บุคคลธรรมดา",
-                  //     "อื่นๆ",
-                  //   ],
-                  //   showClearButton: true,
-                  //   onChanged: print,
-                  //   popupItemDisabled: (String? s) =>
-                  //       s?.startsWith('I') ?? false,
-                  //   clearButtonSplashRadius: 20,
-                  //   selectedItem: "กรุณาเลือก",
-                  // ),
-                  // Divider(),
+                  //เลือกประเภทบุคคล
+                  DropdownSearch<String>(
+                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                    dropdownSearchDecoration: InputDecoration(
+                      hintText: "กรุณาเลือก",
+                      labelText: "เลือกประเภทบุคคล*",
+                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                      border: OutlineInputBorder(),
+                    ),
+                    mode: Mode.MENU,
+                    showSelectedItems: true,
+                    items: [
+                      "นิติบุคคล",
+                      "บุคคลธรรมดา",
+                      "อื่นๆ",
+                    ],
+                    showClearButton: true,
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        selecttypeperson = newValue!;
+                        print(selecttypeperson);
+                      });
+                    },
+                    popupItemDisabled: (String? s) =>
+                        s?.startsWith('I') ?? false,
+                    clearButtonSplashRadius: 20,
+                    selectedItem: "กรุณาเลือก",
+                  ),
+                  Divider(),
 
                   // //อื่นๆ*โปรดระบุ
                   // TextField(
@@ -312,30 +340,35 @@ class _RegisterPageState extends State<RegisterPage> {
                       )),
                   Divider(),
 
-                  // //กรุณาเลือกคำนำหน้า
-                  // DropdownSearch<String>(
-                  //   validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
-                  //   dropdownSearchDecoration: InputDecoration(
-                  //     hintText: "กรุณาเลือก",
-                  //     labelText: "คำนำหน้า*",
-                  //     contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
-                  //     border: OutlineInputBorder(),
-                  //   ),
-                  //   mode: Mode.MENU,
-                  //   showSelectedItems: true,
-                  //   items: [
-                  //     "นางสาว",
-                  //     "นาง",
-                  //     "นาย",
-                  //   ],
-                  //   showClearButton: true,
-                  //   onChanged: print,
-                  //   popupItemDisabled: (String? s) =>
-                  //       s?.startsWith('I') ?? false,
-                  //   clearButtonSplashRadius: 20,
-                  //   selectedItem: "กรุณาเลือก",
-                  // ),
-                  // Divider(),
+                  //กรุณาเลือกคำนำหน้า
+                  DropdownSearch<String>(
+                    validator: (v) => v == null ? "กรุณาเลือกข้อมูล" : null,
+                    dropdownSearchDecoration: InputDecoration(
+                      hintText: "กรุณาเลือก",
+                      labelText: "คำนำหน้า*",
+                      contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                      border: OutlineInputBorder(),
+                    ),
+                    mode: Mode.MENU,
+                    showSelectedItems: true,
+                    items: [
+                      "นางสาว",
+                      "นาง",
+                      "นาย",
+                    ],
+                    showClearButton: true,
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        selectprefix = newValue!;
+                        print(selectprefix);
+                      });
+                    },
+                    popupItemDisabled: (String? s) =>
+                        s?.startsWith('I') ?? false,
+                    clearButtonSplashRadius: 20,
+                    selectedItem: "กรุณาเลือก",
+                  ),
+                  Divider(),
 
                   //ชื่อ
                   TextField(
