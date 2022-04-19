@@ -17,21 +17,21 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(Icons.arrow_back_ios_new_outlined),
-          ),
-          title: const Text(
-            'ข้อมูลส่วนตัว',
-            style: TextStyle(
-              fontSize: 18,
-            ),
-          ),
-          backgroundColor: Colors.blue[800],
-        ),
+        // appBar: AppBar(
+        //   leading: IconButton(
+        //     onPressed: () {
+        //       Navigator.pop(context);
+        //     },
+        //     icon: Icon(Icons.arrow_back_ios_new_outlined),
+        //   ),
+        //   title: const Text(
+        //     'ข้อมูลส่วนตัว',
+        //     style: TextStyle(
+        //       fontSize: 18,
+        //     ),
+        //   ),
+        //   backgroundColor: Colors.blue[800],
+        // ),
         body: Padding(
             padding: const EdgeInsets.all(25),
             child: Form(

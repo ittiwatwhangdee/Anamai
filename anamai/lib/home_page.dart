@@ -11,7 +11,7 @@ import 'login_page.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-void main() => runApp(const HomePage());
+void main() => runApp(HomePage());
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -22,21 +22,16 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'หน้าหลัก',
-      style: optionStyle,
+
+  static List<Widget> _widgetOptions = <Widget>[
+    Center(
+      child: Image.asset(
+        'assets/images/LogoAnamai.png',
+        width: 150,
+      ),
     ),
-    Text(
-      'บัตรของฉัน',
-      style: optionStyle,
-    ),
-    Text(
-      'ข้อมูลส่วนตัว',
-      style: optionStyle,
-    ),
+    MyCardPage(),
+    ProfilePage(),
   ];
 
   void _onItemTapped(int index) {
@@ -67,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const NotificationPage()),
+                          builder: (context) => NotificationPage()),
                     );
                   }),
               Positioned(
@@ -115,7 +110,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               leading: Icon(Icons.home),
-              title: const Text(
+              title: Text(
                 'หน้าหลัก',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
@@ -126,7 +121,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               leading: Icon(Icons.ballot_outlined),
-              title: const Text(
+              title: Text(
                 'ข่าวประชาสัมพันธ์',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
@@ -134,28 +129,27 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const AnnouncenmentPage()),
+                  MaterialPageRoute(builder: (context) => AnnouncenmentPage()),
                 );
               },
             ),
-            ListTile(
-              leading: Icon(Icons.badge),
-              title: const Text(
-                'บัตรของฉัน',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              trailing: Icon(Icons.arrow_right),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyCardPage()),
-                );
-              },
-            ),
+            // ListTile(
+            //   leading: Icon(Icons.badge),
+            //   title: Text(
+            //     'บัตรของฉัน',
+            //     style: TextStyle(fontWeight: FontWeight.bold),
+            //   ),
+            //   trailing: Icon(Icons.arrow_right),
+            //   onTap: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (context) => MyCardPage()),
+            //     );
+            //   },
+            // ),
             ListTile(
               leading: Icon(Icons.assignment),
-              title: const Text(
+              title: Text(
                 'ลงทะเบียนขอบัตร',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
@@ -163,14 +157,13 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const RegisterCardPage()),
+                  MaterialPageRoute(builder: (context) => RegisterCardPage()),
                 );
               },
             ),
             ListTile(
               leading: Icon(Icons.copyright_outlined),
-              title: const Text(
+              title: Text(
                 'Health Point',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
@@ -178,13 +171,13 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const HealthPoint()),
+                  MaterialPageRoute(builder: (context) => HealthPoint()),
                 );
               },
             ),
             ListTile(
               leading: Icon(Icons.assignment_ind),
-              title: const Text(
+              title: Text(
                 'แจ้งร้องเรียน',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
@@ -192,14 +185,13 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const ComplaintPage()),
+                  MaterialPageRoute(builder: (context) => ComplaintPage()),
                 );
               },
             ),
             ListTile(
               leading: Icon(Icons.format_list_bulleted),
-              title: const Text(
+              title: Text(
                 'สถานะการร้องเรียน',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
@@ -207,31 +199,30 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const ComplaintCardPage()),
+                  MaterialPageRoute(builder: (context) => ComplaintCardPage()),
                 );
               },
             ),
-            ListTile(
-              leading: Icon(Icons.account_circle_outlined),
-              title: const Text(
-                'ข้อมูลส่วนตัว',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              trailing: Icon(Icons.arrow_right),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ProfilePage()),
-                );
-              },
-            ),
+            // ListTile(
+            //   leading: Icon(Icons.account_circle_outlined),
+            //   title: Text(
+            //     'ข้อมูลส่วนตัว',
+            //     style: TextStyle(fontWeight: FontWeight.bold),
+            //   ),
+            //   trailing: Icon(Icons.arrow_right),
+            //   onTap: () {
+            //     // Update the state of the app
+            //     // ...
+            //     // Then close the drawer
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (context) => ProfilePage()),
+            //     );
+            //   },
+            // ),
             ListTile(
               leading: Icon(Icons.logout_outlined),
-              title: const Text(
+              title: Text(
                 'ออกจากระบบ',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
@@ -239,7 +230,7 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const LoginPage()),
+                  MaterialPageRoute(builder: (context) => LoginPage()),
                 );
               },
             ),
@@ -247,7 +238,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'หน้าหลัก',

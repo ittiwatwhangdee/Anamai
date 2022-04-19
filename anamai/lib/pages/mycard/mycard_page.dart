@@ -10,43 +10,16 @@ class MyCardPage extends StatefulWidget {
 }
 
 class _MyCardPageState extends State<MyCardPage> {
+  String business = 'ประชาชน2';
+  bool hideAppbar = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(Icons.arrow_back_ios_new_outlined),
-        ),
-        title: const Text(
-          MyCardPage._title,
-          style: TextStyle(
-            fontSize: 18,
-          ),
-        ),
-        backgroundColor: Colors.blue[800],
-      ),
-      body: const MyStatelessWidget(),
-    );
-  }
-}
-
-class MyStatelessWidget extends StatefulWidget {
-  const MyStatelessWidget({Key? key}) : super(key: key);
-
-  @override
-  _MyStatelessWidgetState createState() => _MyStatelessWidgetState();
-}
-
-class _MyStatelessWidgetState extends State<MyStatelessWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: Padding(
+        body: Scaffold(
+            body: Padding(
       padding: const EdgeInsets.all(8.0),
       child: ListView(children: [
+        // if (business == 'ประชาชน')
         Padding(
           padding: EdgeInsets.all(8.0),
           child: Card(
@@ -91,6 +64,7 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
             ),
           ),
         ),
+        // if (business == 'ประชาชน2')
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Card(
@@ -129,6 +103,7 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
             ),
           ),
         ),
+        // if (business == 'ประชาชน3')
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Card(
@@ -167,6 +142,7 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
             ),
           ),
         ),
+        // if (business == 'ประชาชน4')
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Card(
@@ -206,6 +182,6 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
           ),
         ),
       ]),
-    ));
+    )));
   }
 }
