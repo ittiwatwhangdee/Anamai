@@ -36,7 +36,7 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController address_road = TextEditingController();
 
   Future register() async {
-    var url = "http://192.168.1.7/flutter_login/register.php";
+    var url = "http://192.168.1.41/flutter_login/register.php";
     var response = await http.post(Uri.parse(url), body: {
       "username": user.text,
       "password": pass.text,
