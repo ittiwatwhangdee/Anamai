@@ -20,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController pass = TextEditingController();
 
   Future login() async {
-    var url = "http://192.168.1.41/flutter_login/login.php";
+    var url = "http://192.168.1.12/flutter_login/login.php";
     var response = await http.post(Uri.parse(url), body: {
       "username": user.text,
       "password": pass.text,
