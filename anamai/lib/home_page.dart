@@ -95,8 +95,8 @@ class _HomePageState extends State<HomePage> {
               decoration: BoxDecoration(
                 color: Color(0xFF1565C0),
               ),
-              accountName: Text("Ittiwat Whangdee"),
-              accountEmail: Text("s6130613045@phuket.psu.ac.th"),
+              accountName: Text("John Doe"),
+              accountEmail: Text("test2@gmail.com"),
               currentAccountPicture: CircleAvatar(
                 backgroundColor:
                     Theme.of(context).platform == TargetPlatform.iOS
